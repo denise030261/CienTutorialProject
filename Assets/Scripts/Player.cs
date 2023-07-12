@@ -10,9 +10,6 @@ public class Player : MonoBehaviour
     public int maxHP = 5;
     public int maxMP = 10;
 
-    public Image HP_Image;
-    public Image MP_Image;
-
     public static Player Instance { get; private set; } = null;
 
     private void Awake()
@@ -32,7 +29,7 @@ public class Player : MonoBehaviour
                 // 플레이어가 데미지 입을 때 
             }
             hp = value;
-            SetUI_HP(hp, maxHP);
+            UI_Manager.Instance.SetUI_HP(hp, maxHP);
             if (hp <= 0)
             {
                 // 게임 오버 화면 띄우기
@@ -57,23 +54,15 @@ public class Player : MonoBehaviour
                 // 플레이어가 데미지 입을 때 
             }
             mp = value;
-            SetUI_HP(mp, maxMP);
+            UI_Manager.Instance.SetUI_MP(mp, maxMP);
             if (mp <= 0)
             {
-                // 게임 오버 화면 띄우기
+                UI_Manager.Instance.GameOverImage.SetActive(true);
             }
             if (mp > maxMP)
             {
                 mp = maxMP;
             }
         }
-    }
-    private void SetUI_HP(int current, int max)
-    {
-        HP_Image.fillAmount = (float)current / max;
-    }
-    private void SetUI_MP(int current, int max)
-    {
-        MP_Image.fillAmount = (float)current / max;
     }
 }

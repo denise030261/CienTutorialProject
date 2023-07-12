@@ -19,19 +19,19 @@ public class UI_WeaponSelected : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SelectedSlot(0);
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SelectedSlot(1);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             SelectedSlot(2);
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             SelectedSlot(3);
         }

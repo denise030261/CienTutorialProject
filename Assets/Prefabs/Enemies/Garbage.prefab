@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2732709900160907468}
   - component: {fileID: 524821205843024158}
   - component: {fileID: 3110894425564980378}
+  - component: {fileID: 4048741669314958864}
   m_Layer: 0
   m_Name: Garbage
   m_TagString: Untagged
@@ -130,3 +131,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4048741669314958864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8390362054890458521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb5f26667b350542929ccaeb1ec9bd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 5
+  Damage: 1
+  DamageReload: 5
+  MoveSpeed: 0
