@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class WeaponScript : MonoBehaviour
 {
+    public static WeaponScript Instance { get; private set; } = null;
+
     public GameObject[] weapons;
     public int currentWeapon;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {

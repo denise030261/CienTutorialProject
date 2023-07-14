@@ -16,23 +16,31 @@ public class UI_WeaponSelected : MonoBehaviour
         }
     } // 선택 유무 초기화
 
+    private void Start()
+    {
+        SelectedWeapon[0].SetActive(true);
+    }
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            WeaponScript.Instance.currentWeapon = 0;
             SelectedSlot(0);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
+            WeaponScript.Instance.currentWeapon = 1;
             SelectedSlot(1);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
+            WeaponScript.Instance.currentWeapon = 2;
             SelectedSlot(2);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
+            WeaponScript.Instance.currentWeapon = 3;
             SelectedSlot(3);
         }
     }
@@ -42,16 +50,7 @@ public class UI_WeaponSelected : MonoBehaviour
         {
             if (i == Selected)
             {
-                if (!IsSelected[i])
-                {
-                    SelectedWeapon[i].SetActive(true);
-                    IsSelected[i] = true;
-                }
-                else
-                {
-                    SelectedWeapon[i].SetActive(false);
-                    IsSelected[i] = false;
-                }
+                SelectedWeapon[i].SetActive(true);
             }
             else
             {
