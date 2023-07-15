@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6988076551889249473}
   m_Layer: 0
   m_Name: Stain
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,3 +160,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9036ca5b4894dde45b10aec69e332f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPrefab: {fileID: 8390362054890458521}
+  minX: -1
+  maxX: 1
+  minY: -1
+  maxY: 1
+  spawnInterval: 2
