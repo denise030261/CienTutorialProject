@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public int Damage = 1;
     public float DamageReload = 3;
     public int MoveSpeed = 0;
+    public int Score;
 
     public static Enemy Instance { get; private set; } = null;
 
@@ -44,6 +45,7 @@ public class Enemy : MonoBehaviour
     IEnumerator DamageRoutine()
     {
         yield return new WaitForSeconds(DamageReload);
+        Debug.Log("»Æ¿Œ");
         Player.Instance.HP -= Damage;
     }
 }

@@ -448,7 +448,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120, y: -50}
+  m_AnchoredPosition: {x: 150, y: -50}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &213865572
@@ -1135,8 +1135,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b1b852ea9b2eabf43b2c94883efef70e, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
@@ -2174,7 +2174,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -120, y: -50}
+  m_AnchoredPosition: {x: -150, y: -50}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1312796868
@@ -2643,7 +2643,6 @@ GameObject:
   - component: {fileID: 1747620459}
   - component: {fileID: 1747620463}
   - component: {fileID: 1747620464}
-  - component: {fileID: 1747620465}
   - component: {fileID: 1747620466}
   m_Layer: 5
   m_Name: Canvas
@@ -2772,18 +2771,6 @@ MonoBehaviour:
   ScoreText: {fileID: 1312796868}
   StageText: {fileID: 213865572}
   GameOverImage: {fileID: 1875032313}
---- !u!114 &1747620465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1747620458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc365c6db80f8ce4fabaf493e85e203f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1747620466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2798,8 +2785,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Score: 0
   Stage: 0
-  Hp: 0
-  Mp: 0
+  InitialHp: 0
+  InitialMp: 0
 --- !u!1 &1817359390
 GameObject:
   m_ObjectHideFlags: 0
@@ -3089,8 +3076,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b1b852ea9b2eabf43b2c94883efef70e, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0

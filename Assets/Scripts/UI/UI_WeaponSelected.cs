@@ -7,6 +7,7 @@ public class UI_WeaponSelected : MonoBehaviour
 {
     public GameObject[] SelectedWeapon;
     private bool[] IsSelected = new bool[4];
+    public static UI_WeaponSelected Instance { get; private set; } = null;
 
     private void Awake()
     {

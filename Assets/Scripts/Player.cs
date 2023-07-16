@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     private int hp;
     private int mp;
-    public int maxHP = 5;
+    public int maxHP = 10;
     public int maxMP = 10;
 
     public static Player Instance { get; private set; } = null;
@@ -15,6 +15,19 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        HP = maxHP;
+        MP = 0;
+    }
+    private void Update()
+    {
+        if(HP<=0)
+        {
+            Time.timeScale = 0;
+        }
     }
     public int HP
     {
@@ -26,13 +39,13 @@ public class Player : MonoBehaviour
         {
             if (value < hp)
             {
-                // 플레이어가 데미지 입을 때 
+                //Debug.Log("줄어듭니다");
             }
             hp = value;
             UI_Manager.Instance.SetUI_HP(hp, maxHP);
             if (hp <= 0)
             {
-                // 게임 오버 화면 띄우기
+                UI_Manager.Instance.GameOverImage.SetActive(true);
             }
             if (hp > maxHP)
             {
@@ -57,7 +70,7 @@ public class Player : MonoBehaviour
             UI_Manager.Instance.SetUI_MP(mp, maxMP);
             if (mp <= 0)
             {
-                UI_Manager.Instance.GameOverImage.SetActive(true);
+                
             }
             if (mp > maxMP)
             {

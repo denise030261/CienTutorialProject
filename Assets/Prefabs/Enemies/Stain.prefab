@@ -148,6 +148,7 @@ MonoBehaviour:
   Damage: 1
   DamageReload: 5
   MoveSpeed: 0
+  Score: 0
 --- !u!114 &6988076551889249473
 MonoBehaviour:
   m_ObjectHideFlags: 0
