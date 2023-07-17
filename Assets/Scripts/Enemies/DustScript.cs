@@ -12,6 +12,8 @@ public class DustScript : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        base.Start();
+
         timer = cleanerCooldown;
         direction = Random.insideUnitCircle.normalized;
     }
@@ -29,7 +31,7 @@ public class DustScript : Enemy
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Cleaner"))
+        if (collision.gameObject.name.Contains("Cleaner"))
         {
             if (timer <= 0f)
             {

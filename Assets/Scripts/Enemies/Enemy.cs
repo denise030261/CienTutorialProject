@@ -9,6 +9,11 @@ public abstract class Enemy : MonoBehaviour
     public int damage;
     public float damageCooldown;
 
+    protected void Start()
+    {
+        hp = maxHP;
+    }
+
     private void OnEnable()
     {
         StartCoroutine(DamagePlayer());

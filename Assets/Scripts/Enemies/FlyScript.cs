@@ -10,8 +10,10 @@ public class FlyScript : Enemy
     private Vector2 direction;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
+        base.Start();
+
         timer = turnInterval;
         direction = Random.insideUnitCircle.normalized;
     }
@@ -33,7 +35,7 @@ public class FlyScript : Enemy
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Flapper"))
+        if (collision.gameObject.name.Contains("Flapper"))
         {
             hp -= 1;
 

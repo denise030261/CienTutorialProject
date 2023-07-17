@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2732709900160907468}
   - component: {fileID: 524821205843024158}
   - component: {fileID: 3110894425564980378}
+  - component: {fileID: -5857188712990691356}
   m_Layer: 0
   m_Name: Garbage
   m_TagString: Enemy
@@ -130,3 +131,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-5857188712990691356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8390362054890458521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3601c8d1a3be40899b6c17caa510e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 5
+  damage: 0
+  damageCooldown: 0
+  flyPrefab: {fileID: 5279994789223213176, guid: b9ea923f2bb5d42e4b484f59f600e737, type: 3}

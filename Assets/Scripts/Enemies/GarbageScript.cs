@@ -9,7 +9,7 @@ public class GarbageScript : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        
+        base.Start();
     }
 
     // Update is called once per frame
@@ -20,7 +20,7 @@ public class GarbageScript : Enemy
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Hand"))
+        if (collision.gameObject.name.Contains("Hand"))
         {
             hp -= 1;
 
