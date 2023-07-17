@@ -24,24 +24,24 @@ public class UI_Manager : MonoBehaviour
         StageText.text = "Stage : "+GameManager_World.Instance.Stage.ToString();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Esc 버튼을 눌렀습니다");
-            // 환경 설정 팝업창 뜨기
+            Debug.Log("Esc ?????? ??????????");
+            // ???? ???? ?????? ????
         }
     }
     public void SetUI_HP(int current, int max)
     {
         HP_Image.fillAmount = (float)current / max;
-    } // HP 상태
+    } // HP ????
     public void SetUI_MP(int current, int max)
     {
         MP_Image.fillAmount = (float)current / max;
-    } // MP 상태
+    } // MP ????
     public void OnClick_Retry()
     {
-        ;
-    } // 다시 시작
+        
+    } // ???? ????
     public void OnClick_LoadToMain()
     {
-        ;
-    } // 메인화면으로
+        
+    } // ????????????
 }

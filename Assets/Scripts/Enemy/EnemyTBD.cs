@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyTBD : MonoBehaviour
 {
     private int hp;
     public int maxHP = 5;
     public int Damage = 1;
     public float DamageReload = 3;
     public int MoveSpeed = 0;
-    public int Score;
 
-    public static Enemy Instance { get; private set; } = null;
+    public static EnemyTBD Instance { get; private set; } = null;
 
     public int HP
     {
@@ -23,7 +22,7 @@ public class Enemy : MonoBehaviour
         {
             if (value < hp)
             {
-                // 적이 데미지 입을 때 
+                // ???? ?????? ???? ?? 
             }
             hp = value;
             if (hp > maxHP)
@@ -45,7 +44,6 @@ public class Enemy : MonoBehaviour
     IEnumerator DamageRoutine()
     {
         yield return new WaitForSeconds(DamageReload);
-        Debug.Log("확인");
         Player.Instance.HP -= Damage;
     }
 }
