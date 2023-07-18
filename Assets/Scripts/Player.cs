@@ -39,9 +39,10 @@ public class Player : MonoBehaviour
         {
             if (value < hp)
             {
-                //Debug.Log("줄어듭니다");
+                //Debug.Log("??????????");
             }
             hp = value;
+            Debug.Log("HP=" + value);
             UI_Manager.Instance.SetUI_HP(hp, maxHP);
             if (hp <= 0)
             {
@@ -64,7 +65,7 @@ public class Player : MonoBehaviour
         {
             if (value < mp)
             {
-                // 플레이어가 데미지 입을 때 
+                // ?????????? ?????? ???? ?? 
             }
             mp = value;
             UI_Manager.Instance.SetUI_MP(mp, maxMP);

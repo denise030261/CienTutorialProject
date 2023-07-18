@@ -10,7 +10,7 @@ public class GarbageScript : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        base.Start();
+        SetHpMax();
     }
 
     // Update is called once per frame

@@ -6,10 +6,10 @@ public abstract class Enemy : MonoBehaviour
 {
     protected int hp;
     public int maxHP = 5;
-    public int damage;
-    public float damageCooldown;
+    public int damage = 1;
+    public float damageCooldown = 1f;
 
-    protected void Start()
+    protected void SetHpMax()
     {
         hp = maxHP;
     }
@@ -24,7 +24,7 @@ public abstract class Enemy : MonoBehaviour
         StopAllCoroutines();
     }
 
-    private IEnumerator DamagePlayer()
+    protected IEnumerator DamagePlayer()
     {
         yield return new WaitForSeconds(damageCooldown);
 

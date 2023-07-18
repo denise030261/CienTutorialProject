@@ -12,7 +12,7 @@ public class DustScript : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        base.Start();
+        SetHpMax();
 
         timer = cleanerCooldown;
         direction = Random.insideUnitCircle.normalized;
