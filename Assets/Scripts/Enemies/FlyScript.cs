@@ -54,7 +54,7 @@ public class FlyScript : Enemy
     private bool IsOutrange()
     {
         return (transform.position.x > maxX)
-            || (transform.position.x < maxY)
+            || (transform.position.x < minX)
             || (transform.position.y > maxY)
             || (transform.position.y < minY);
     }
