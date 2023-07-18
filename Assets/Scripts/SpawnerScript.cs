@@ -24,9 +24,16 @@ public class SpawnerScript : MonoBehaviour
         {
             GameObject enemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
 
+            float minX = CameraBound.Instance.Left + enemy.transform.localScale.x / 2;
+            float maxX = CameraBound.Instance.Right - enemy.transform.localScale.x / 2;
+            float minY = CameraBound.Instance.Top - enemy.transform.localScale.y / 2;
+            float maxY = CameraBound.Instance.Bottom + enemy.transform.localScale.y / 2;
+
             Vector3 position = new Vector3();
-            position.x = Random.Range(-10, 10);
-            position.y = Random.Range(-5, 5);
+
+            position.x = Random.Range(minX, maxX);
+            position.y = Random.Range(minY, maxY);
+
             Instantiate(enemy, position, Quaternion.identity);
 
             yield return new WaitForSeconds(10);

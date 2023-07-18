@@ -28,6 +28,15 @@ public class Player : MonoBehaviour
         {
             Time.timeScale = 0;
         }
+        if (MP == maxMP && Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+            foreach (GameObject Enemy in Enemies)
+            {
+                Destroy(Enemy);
+            }
+        }
     }
     public int HP
     {
@@ -39,7 +48,7 @@ public class Player : MonoBehaviour
         {
             if (value < hp)
             {
-                //Debug.Log("줄어듭니다");
+                //Debug.Log("??????????");
             }
             hp = value;
             UI_Manager.Instance.SetUI_HP(hp, maxHP);
@@ -64,7 +73,7 @@ public class Player : MonoBehaviour
         {
             if (value < mp)
             {
-                // 플레이어가 데미지 입을 때 
+                // ?????????? ?????? ???? ?? 
             }
             mp = value;
             UI_Manager.Instance.SetUI_MP(mp, maxMP);

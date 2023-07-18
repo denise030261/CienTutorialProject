@@ -10,9 +10,9 @@ public class FlyScript : Enemy
     private Vector2 direction;
 
     // Start is called before the first frame update
-    protected void Start()
+    void Start()
     {
-        base.Start();
+        SetHpMax();
 
         timer = turnInterval;
         direction = Random.insideUnitCircle.normalized;
