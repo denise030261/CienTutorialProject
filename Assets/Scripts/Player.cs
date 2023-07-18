@@ -27,6 +27,15 @@ public class Player : MonoBehaviour
         if(HP<=0)
         {
             Time.timeScale = 0;
+        } // Á×À¸¸é ½Ã°£ ¸ØÃã
+        if(MP==maxMP && Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+            foreach (GameObject Enemy in Enemies)
+            {
+                Destroy(Enemy);
+            }
         }
     }
     public int HP
