@@ -30,8 +30,10 @@ public class SpawnerScript : MonoBehaviour
             float maxY = CameraBound.Instance.Bottom + enemy.transform.localScale.y / 2;
 
             Vector3 position = new Vector3();
+
             position.x = Random.Range(minX, maxX);
             position.y = Random.Range(minY, maxY);
+
             Instantiate(enemy, position, Quaternion.identity);
 
             yield return new WaitForSeconds(10);

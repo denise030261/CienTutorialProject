@@ -24,7 +24,16 @@ public class WeaponScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButton(0) && currentWeapon==3)
+        {
+            Vector3 position = Input.mousePosition;
+            position = Camera.main.ScreenToWorldPoint(position);
+            position.z = 0;
+
+            GameObject weaponInstance = Instantiate(weapons[currentWeapon], position, Quaternion.identity);
+            Destroy(weaponInstance, .01f);
+        }
+        else if (Input.GetMouseButtonDown(0))
         {
             if (weaponInstance != null)
             {
