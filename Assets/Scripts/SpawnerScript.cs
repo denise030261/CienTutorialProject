@@ -25,8 +25,8 @@ public class SpawnerScript : MonoBehaviour
             GameObject enemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
 
             Vector3 position = new Vector3();
-            position.x = Random.Range(-8, 8);
-            position.y = Random.Range(-3, 3);
+            position.x = Random.Range(-10, 10);
+            position.y = Random.Range(-5, 5);
             Instantiate(enemy, position, Quaternion.identity);
 
             yield return new WaitForSeconds(10);

@@ -11,9 +11,7 @@ GameObject:
   - component: {fileID: 2732709900160907468}
   - component: {fileID: 524821205843024158}
   - component: {fileID: 3110894425564980378}
-  - component: {fileID: 7108425030842824256}
   - component: {fileID: 6988076551889249473}
-  - component: {fileID: 5079480333256328805}
   m_Layer: 0
   m_Name: Stain
   m_TagString: Enemy
@@ -133,33 +131,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &7108425030842824256
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8390362054890458521}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
 --- !u!114 &6988076551889249473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,19 +149,3 @@ MonoBehaviour:
   minY: -1
   maxY: 1
   spawnInterval: 2
---- !u!114 &5079480333256328805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8390362054890458521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7da8cec2af77f842a6df8e4a7ec4cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 5
-  Damage: 0
-  DamageReload: 3
-  MoveSpeed: 0
