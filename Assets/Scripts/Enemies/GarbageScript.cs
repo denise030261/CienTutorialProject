@@ -6,6 +6,7 @@ public class GarbageScript : Enemy
 {
     public GameObject flyPrefab;
 
+//<<<<<<< Updated upstream
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,8 @@ public class GarbageScript : Enemy
         
     }
 
+//=======
+//>>>>>>> Stashed changes
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name.Contains("Hand"))
