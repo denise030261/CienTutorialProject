@@ -237,7 +237,8 @@ MonoBehaviour:
   - {fileID: 1721909664300617278, guid: 01b6625d6823e419d8f8d13240541d29, type: 3}
   - {fileID: 8926108909792382787, guid: b49201a1b3160444ab1e6b673db234d8, type: 3}
   - {fileID: 8926108909792382787, guid: 1318c0e277ca36848bba0e6b34b83769, type: 3}
-  currentWeapon: 0
+  currentWeapon: 1
+  weaponInstance: {fileID: 0}
 --- !u!4 &79267577
 Transform:
   m_ObjectHideFlags: 0
@@ -577,7 +578,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1747620464}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
         m_MethodName: OnClick_LoadToMain
         m_Mode: 1
@@ -711,7 +712,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1747620464}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
         m_MethodName: OnClick_Retry
         m_Mode: 1
@@ -920,6 +921,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1001,6 +1003,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96513cd1cb714f69a81bef66e6ae2f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minX: -10
+  maxX: 10
+  minY: -5
+  maxY: 5
 --- !u!1 &544451724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,6 +1837,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
+  - {fileID: 8331707625257046816, guid: 1f16e07d83ee24dfabcc77b3db0c24f0, type: 3}
+  - {fileID: 8390362054890458521, guid: 8c6098706a13d4a2e8b876d0c1fd8094, type: 3}
   - {fileID: 8390362054890458521, guid: 1c0d739c13190ca459b49ec72fa614c7, type: 3}
 --- !u!4 &1060662777
 Transform:
@@ -2642,8 +2662,8 @@ GameObject:
   - component: {fileID: 1747620460}
   - component: {fileID: 1747620459}
   - component: {fileID: 1747620463}
-  - component: {fileID: 1747620464}
   - component: {fileID: 1747620466}
+  - component: {fileID: 1747620467}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2754,23 +2774,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 5
   maxMP: 10
---- !u!114 &1747620464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1747620458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17811f99c9f9769419bd8be85c9d2d1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP_Image: {fileID: 595598541}
-  MP_Image: {fileID: 1944576316}
-  ScoreText: {fileID: 1312796868}
-  StageText: {fileID: 213865572}
-  GameOverImage: {fileID: 1875032313}
 --- !u!114 &1747620466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2787,6 +2790,23 @@ MonoBehaviour:
   Stage: 0
   InitialHp: 0
   InitialMp: 0
+--- !u!114 &1747620467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747620458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17811f99c9f9769419bd8be85c9d2d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP_Image: {fileID: 595598541}
+  MP_Image: {fileID: 1944576316}
+  ScoreText: {fileID: 1312796868}
+  StageText: {fileID: 213865572}
+  GameOverImage: {fileID: 1875032313}
 --- !u!1 &1817359390
 GameObject:
   m_ObjectHideFlags: 0
