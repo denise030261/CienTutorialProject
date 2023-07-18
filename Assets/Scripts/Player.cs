@@ -42,7 +42,6 @@ public class Player : MonoBehaviour
                 //Debug.Log("??????????");
             }
             hp = value;
-            Debug.Log("HP=" + value);
             UI_Manager.Instance.SetUI_HP(hp, maxHP);
             if (hp <= 0)
             {
