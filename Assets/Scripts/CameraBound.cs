@@ -69,9 +69,4 @@ public class CameraBound : MonoBehaviour
         size_y_ = camera_.orthographicSize;
         size_x_ = camera_.orthographicSize * Screen.width / Screen.height;
     }
-
-    private void Update()
-    {
-
-    }
 }

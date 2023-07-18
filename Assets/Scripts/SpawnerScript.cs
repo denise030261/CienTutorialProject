@@ -26,8 +26,8 @@ public class SpawnerScript : MonoBehaviour
 
             float minX = CameraBound.Instance.Left + enemy.transform.localScale.x / 2;
             float maxX = CameraBound.Instance.Right - enemy.transform.localScale.x / 2;
-            float minY = CameraBound.Instance.Top - enemy.transform.localScale.y / 2;
-            float maxY = CameraBound.Instance.Bottom + enemy.transform.localScale.y / 2;
+            float minY = CameraBound.Instance.Bottom + enemy.transform.localScale.y / 2;
+            float maxY = CameraBound.Instance.Top - enemy.transform.localScale.y / 2;
 
             Vector3 position = new Vector3();
 
