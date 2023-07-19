@@ -144,7 +144,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 5
-  damage: 0
-  damageCooldown: 0
-  cleanerCooldown: 1
+  damage: 3
+  damageCooldown: 5
+  GiveMP: 3
+  GiveScore: 150
+  cleanerCooldown: 0.5
   speed: 1

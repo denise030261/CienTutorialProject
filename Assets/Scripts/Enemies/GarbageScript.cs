@@ -5,17 +5,12 @@ using UnityEngine;
 public class GarbageScript : Enemy
 {
     public GameObject flyPrefab;
+    public float SpawnFlySpeed = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
         SetHpMax();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,6 +22,8 @@ public class GarbageScript : Enemy
             if (hp <= 0)
             {
                 Destroy(gameObject);
+                Player.Instance.MP += GiveMP;
+                Player.Instance.score += GiveScore;
             }
         }
     }
@@ -47,7 +44,7 @@ public class GarbageScript : Enemy
 
         while (enabled)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(SpawnFlySpeed);
             
             float minX = Mathf.Max(CameraBound.Instance.Left, transform.position.x - 3) + flyPrefab.transform.localScale.x / 2;
             float maxX = Mathf.Min(CameraBound.Instance.Right, transform.position.x + 3) - flyPrefab.transform.localScale.x / 2;

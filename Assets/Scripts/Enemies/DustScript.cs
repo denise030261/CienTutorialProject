@@ -42,6 +42,8 @@ public class DustScript : Enemy
                 if (hp <= 0)
                 {
                     Destroy(gameObject);
+                    Player.Instance.MP += GiveMP;
+                    Player.Instance.score += GiveScore;
                 }
             }
 

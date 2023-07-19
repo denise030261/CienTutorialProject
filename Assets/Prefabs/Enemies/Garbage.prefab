@@ -143,7 +143,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3601c8d1a3be40899b6c17caa510e43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 5
-  damage: 0
-  damageCooldown: 0
+  maxHP: 10
+  damage: 3
+  damageCooldown: 5
+  GiveMP: 3
+  GiveScore: 200
   flyPrefab: {fileID: 5279994789223213176, guid: b9ea923f2bb5d42e4b484f59f600e737, type: 3}
+  SpawnFlySpeed: 2

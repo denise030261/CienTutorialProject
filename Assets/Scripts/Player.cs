@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private int mp;
     public int maxHP = 10;
     public int maxMP = 10;
+    public int score = 0;
 
     public static Player Instance { get; private set; } = null;
 
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour
 
             foreach (GameObject Enemy in Enemies)
             {
+                MP = 0;
                 Destroy(Enemy);
             }
         }

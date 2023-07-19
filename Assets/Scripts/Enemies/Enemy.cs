@@ -8,6 +8,8 @@ public abstract class Enemy : MonoBehaviour
     public int maxHP = 5;
     public int damage = 1;
     public float damageCooldown = 1f;
+    public int GiveMP = 3;
+    public int GiveScore = 100;
 
     protected void SetHpMax()
     {

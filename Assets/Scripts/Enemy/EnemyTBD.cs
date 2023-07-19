@@ -31,6 +31,7 @@ public class EnemyTBD : MonoBehaviour
             }
         }
     }
+
     private void Awake()
     {
         Instance = this;

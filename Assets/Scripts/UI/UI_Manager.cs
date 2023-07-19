@@ -9,7 +9,6 @@ public class UI_Manager : MonoBehaviour
     public Image HP_Image;
     public Image MP_Image;
     public Text ScoreText;
-    public Text StageText;
 
     public GameObject GameOverImage;
     public static UI_Manager Instance { get; private set; } = null;
@@ -20,8 +19,7 @@ public class UI_Manager : MonoBehaviour
     }
     private void Update()
     {
-        ScoreText.text = GameManager_World.Instance.Score.ToString("D5");
-        StageText.text = "Stage : "+GameManager_World.Instance.Stage.ToString();
+        ScoreText.text = "Score : " + Player.Instance.score.ToString();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("Esc ?????? ??????????");

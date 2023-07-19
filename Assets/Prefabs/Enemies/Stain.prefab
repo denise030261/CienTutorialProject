@@ -149,7 +149,7 @@ MonoBehaviour:
   maxX: 1
   minY: -1
   maxY: 1
-  spawnInterval: 2
+  spawnInterval: 3
 --- !u!114 &1045327173589807274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 5
-  Damage: 1
-  DamageReload: 3
-  MoveSpeed: 0
+  damage: 2
+  damageCooldown: 3
+  GiveMP: 3
+  GiveScore: 100
