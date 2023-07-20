@@ -11,6 +11,12 @@ public abstract class Enemy : MonoBehaviour
     public int GiveMP = 3;
     public int GiveScore = 100;
 
+    public static Enemy Instance { get; private set; } = null;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     protected void SetHpMax()
     {
         hp = maxHP;
