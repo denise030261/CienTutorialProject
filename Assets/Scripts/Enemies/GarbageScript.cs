@@ -43,9 +43,7 @@ public class GarbageScript : Enemy
         yield return new WaitForSeconds(0);
 
         while (enabled)
-        {
-            yield return new WaitForSeconds(SpawnFlySpeed);
-            
+        { 
             float minX = Mathf.Max(CameraBound.Instance.Left, transform.position.x - 3) + flyPrefab.transform.localScale.x / 2;
             float maxX = Mathf.Min(CameraBound.Instance.Right, transform.position.x + 3) - flyPrefab.transform.localScale.x / 2;
             float minY = Mathf.Max(CameraBound.Instance.Bottom, transform.position.y - 3) + flyPrefab.transform.localScale.y / 2;
@@ -58,6 +56,8 @@ public class GarbageScript : Enemy
 
             GameObject flyInstance = Instantiate(flyPrefab, position, Quaternion.identity);
             flyInstance.GetComponent<FlyScript>().SetBound(minX, maxX, minY, maxY);
+
+            yield return new WaitForSeconds(SpawnFlySpeed);
         }
     }
 }
