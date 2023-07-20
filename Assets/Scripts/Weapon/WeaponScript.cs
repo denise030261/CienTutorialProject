@@ -10,9 +10,13 @@ public class WeaponScript : MonoBehaviour
     public int currentWeapon;
     public GameObject weaponInstance;
 
+    private AudioSource audioSource;
+    public AudioClip attackClip;
+
     private void Awake()
     {
         Instance = this;
+        audioSource = GetComponent<AudioSource>();
     }
     // Start is called before the first frame update
     void Start()
@@ -37,6 +41,9 @@ public class WeaponScript : MonoBehaviour
             {
                 Destroy(weaponInstance, .1f);
             }
+
+            audioSource.clip = attackClip;
+            audioSource.Play();
         }
 
         if (Input.GetMouseButtonUp(0))
