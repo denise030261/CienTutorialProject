@@ -38,4 +38,10 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene("mainmenu");
     }
+    
+    
+    public void Close()
+    {
+        Destroy(gameObject);
+    }
 }
