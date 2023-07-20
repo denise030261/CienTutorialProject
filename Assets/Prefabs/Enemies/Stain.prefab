@@ -149,7 +149,7 @@ MonoBehaviour:
   maxX: 1
   minY: -1
   maxY: 1
-  spawnInterval: 3
+  spawnInterval: 2
 --- !u!114 &1045327173589807274
 MonoBehaviour:
   m_ObjectHideFlags: 0
