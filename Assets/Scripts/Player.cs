@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
             UI_Manager.Instance.SetUI_HP(hp, maxHP);
             if (hp <= 0)
             {
+                UI_Manager.Instance.SetScore(score);
                 UI_Manager.Instance.GameOverImage.SetActive(true);
             }
             if (hp > maxHP)

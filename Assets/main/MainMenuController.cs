@@ -17,16 +17,46 @@ public class MainMenuController : MonoBehaviour
 
     public void OpenSettings()
     {
-        SceneManager.LoadScene("option");
+        GameObject settingsPrefab = Resources.Load<GameObject>("optionscene");
+
+        if (settingsPrefab != null)
+        {
+            Instantiate(settingsPrefab);
+        }
+        else
+        {
+            Debug.LogError("Could not load the 'optionscene' prefab.");
+        }
     }
+
+    public void Opentuto()
+    {
+        GameObject settingsPrefab = Resources.Load<GameObject>("tuto");
+
+        if (settingsPrefab != null)
+        {
+            Instantiate(settingsPrefab);
+        }
+        else
+        {
+            Debug.LogError("Could not load the 'tuto' prefab.");
+        }
+    }
+
 
     public void QuitGame()
     {
         Application.Quit();
     }
-    
+
     public void BackSettings()
     {
         SceneManager.LoadScene("mainmenu");
+    }
+    
+    
+    public void Close()
+    {
+        Destroy(gameObject);
     }
 }
