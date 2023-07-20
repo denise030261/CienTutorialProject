@@ -29,6 +29,21 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
+    public void Opentuto()
+    {
+        GameObject settingsPrefab = Resources.Load<GameObject>("tuto");
+
+        if (settingsPrefab != null)
+        {
+            Instantiate(settingsPrefab);
+        }
+        else
+        {
+            Debug.LogError("Could not load the 'tuto' prefab.");
+        }
+    }
+
+
     public void QuitGame()
     {
         Application.Quit();
