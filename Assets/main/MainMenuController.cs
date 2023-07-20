@@ -2,18 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
-    public Text highScoreText;
-
-    private void Start()
-    {
-        int highScore = PlayerPrefs.GetInt("HighScore", 0);
-        highScoreText.text = "HIGH SCORE: " + highScore.ToString();
-    }
-
     public void NewGame()
     {
         SceneManager.LoadScene("SampleScene");
@@ -26,14 +17,23 @@ public class MainMenuController : MonoBehaviour
 
     public void OpenSettings()
     {
-        SceneManager.LoadScene("option");
+        GameObject settingsPrefab = Resources.Load<GameObject>("optionscene");
+
+        if (settingsPrefab != null)
+        {
+            Instantiate(settingsPrefab);
+        }
+        else
+        {
+            Debug.LogError("Could not load the 'optionscene' prefab.");
+        }
     }
 
     public void QuitGame()
     {
         Application.Quit();
     }
-    
+
     public void BackSettings()
     {
         SceneManager.LoadScene("mainmenu");
