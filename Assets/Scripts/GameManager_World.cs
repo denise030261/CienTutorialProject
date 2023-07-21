@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager_World : MonoBehaviour
@@ -26,6 +24,19 @@ public class GameManager_World : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameObject settingsPrefab = Resources.Load<GameObject>("optionscene");
+            Time.timeScale = 0;
+
+            if (settingsPrefab != null)
+            {
+                Instantiate(settingsPrefab);
+            }
+            else
+            {
+                Debug.LogError("Could not load the 'optionscene' prefab.");
+            }
+        }
     }
 }

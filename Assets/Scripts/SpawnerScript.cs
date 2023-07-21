@@ -7,8 +7,8 @@ public class SpawnerScript : MonoBehaviour
     public GameObject[] enemyPrefabs;
     public float SpawnSpeed = 10f;
     private int step = 0; // 스폰 단계
-    private int IntervalScore=2000;
-    private int PreviousScore= 2500;
+    private int IntervalScore=1500;
+    private int PreviousScore= 1500;
 
     private void Update()
     {
@@ -50,22 +50,22 @@ public class SpawnerScript : MonoBehaviour
         while (enabled)
         {
             GameObject enemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-            if(Player.Instance.score<500 && step==0)
+            if(Player.Instance.score<350 && step==0)
             {
                 enemy = enemyPrefabs[0];
                 Debug.Log("PreviousScore : " + PreviousScore + "IntervalScore : " + IntervalScore);
             }
-            else if(Player.Instance.score >= 500 && Player.Instance.score < 1000 && step == 0)
+            else if(Player.Instance.score >= 350 && Player.Instance.score < 800 && step == 0)
             {
                 enemy = enemyPrefabs[1];
                 Debug.Log("PreviousScore : " + PreviousScore + "IntervalScore : " + IntervalScore);
             }
-            else if (Player.Instance.score >= 1000 && Player.Instance.score < 2000 && step == 0)
+            else if (Player.Instance.score >= 800 && Player.Instance.score < 1200 && step == 0)
             {
                 enemy = enemyPrefabs[Random.Range(0, 1)];
                 Debug.Log("PreviousScore : " + PreviousScore + "IntervalScore : " + IntervalScore);
             }
-            else if (Player.Instance.score >= 2000 && Player.Instance.score < 2500 && step == 0)
+            else if (Player.Instance.score >= 1200 && Player.Instance.score < 1500 && step == 0)
             {
                 enemy = enemyPrefabs[2];
                 Debug.Log("PreviousScore : " + PreviousScore + "IntervalScore : " + IntervalScore);
@@ -101,10 +101,16 @@ public class SpawnerScript : MonoBehaviour
                 Debug.Log("PreviousScore : " + PreviousScore + "IntervalScore : " + IntervalScore + "Step : " + step);
             }
             //라운드, 적의 HP, MP, Damage, Spawn을 조절
+
+            //float minX = CameraBound.Instance.Left + enemy.transform.localScale.x / 2;
+            //float maxX = CameraBound.Instance.Right - enemy.transform.localScale.x / 2;
+            //float minY = CameraBound.Instance.Bottom + enemy.transform.localScale.y / 2;
+            //float maxY = CameraBound.Instance.Top - enemy.transform.localScale.y / 2;
+
             float minX = CameraBound.Instance.Left + enemy.transform.localScale.x / 2;
             float maxX = CameraBound.Instance.Right - enemy.transform.localScale.x / 2;
-            float minY = CameraBound.Instance.Bottom + enemy.transform.localScale.y / 2;
-            float maxY = CameraBound.Instance.Top - enemy.transform.localScale.y / 2;
+            float minY = CameraBound.Instance.Bottom + 3;
+            float maxY = CameraBound.Instance.Top - 3;
 
             Vector3 position = new Vector3();
 
@@ -116,5 +122,4 @@ public class SpawnerScript : MonoBehaviour
            yield return new WaitForSeconds(SpawnSpeed);
         }
     }
-   
 }

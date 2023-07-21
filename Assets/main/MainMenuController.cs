@@ -65,6 +65,7 @@ public class MainMenuController : MonoBehaviour
     
     public void Close()
     {
+        Time.timeScale = 1;
         Destroy(gameObject);
     }
 }

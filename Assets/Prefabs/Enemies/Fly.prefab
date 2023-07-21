@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 3
-  damage: 4
+  damage: 2
   damageCooldown: 2
   GiveMP: 3
   GiveScore: 50
