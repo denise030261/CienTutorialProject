@@ -2,9 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
+    public Text highScoreText;
+
+    private void Start()
+    {
+        highScoreText.text = "HIGH SCORE: " + PlayerPrefs.GetInt("HighScore", 0).ToString();
+    }
+
     public void NewGame()
     {
         SceneManager.LoadScene("SampleScene");
