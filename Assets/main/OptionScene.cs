@@ -14,7 +14,12 @@ public class OptionsScene : MonoBehaviour
         bgmVolumeSlider.value = BGMManager.Instance.GetBGMVolume();
     }
 
-    public void OnBGMVolumeChanged(float volume)
+        private void Update()
+        {
+            OnBGMVolumeChanged(bgmVolumeSlider.value);
+        }
+
+        public void OnBGMVolumeChanged(float volume)
     {
         BGMManager.Instance.SetBGMVolume(volume);
     }

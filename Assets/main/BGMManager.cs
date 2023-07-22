@@ -17,7 +17,8 @@ public class BGMManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+            isBGMPlaying = true;
+            if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject); // 씬 변경 시에도 파괴되지 않도록 설정
@@ -30,7 +31,17 @@ public class BGMManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayBGM(AudioClip clip)
+       private void Start()
+        {
+            bgmVolume = PlayerPrefs.GetFloat("BGM", 0.5f);    
+        }
+
+        private void Update()
+        {
+            PlayerPrefs.SetFloat("BGM", audioSource.volume);
+        }
+
+        public void PlayBGM(AudioClip clip)
     {
         bgmClip = clip;
         if (!isBGMPlaying)

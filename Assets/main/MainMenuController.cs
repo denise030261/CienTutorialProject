@@ -11,6 +11,7 @@ public class MainMenuController : MonoBehaviour
     private void Start()
     {
         highScoreText.text = "HIGH SCORE: " + PlayerPrefs.GetInt("HighScore", 0).ToString();
+        
     }
 
     public void NewGame()
