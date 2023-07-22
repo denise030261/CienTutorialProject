@@ -20,7 +20,7 @@ public class BGMManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // 씬 변경 시에도 파괴되지 않도록 설정
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
