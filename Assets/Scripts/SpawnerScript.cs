@@ -41,7 +41,7 @@ public class SpawnerScript : MonoBehaviour
 
     public void Init()
     {
-        SpawnSpeed = 10f;
+        SpawnSpeed = 5f;
         step = 0;
         IntervalScore=1500;
         PreviousScore= 1500;
