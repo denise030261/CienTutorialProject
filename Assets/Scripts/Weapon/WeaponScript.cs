@@ -64,7 +64,7 @@ public class WeaponScript : MonoBehaviour
             }
         }
 
-        if (weaponInstance != null && (currentWeapon == 0 || currentWeapon == 3))
+        if (weaponInstance != null && (instantiatedWeapon == 0 || instantiatedWeapon == 3))
         {
             weaponInstance.transform.position = GetMousePosition();
         }
