@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// 수정 사항 : Q, W, E, R은 숫자로 키보드 변환
+// ???? ???? : Q, W, E, R?? ?????? ?????? ????
 public class UI_WeaponSelected : MonoBehaviour
 {
     public GameObject[] SelectedWeapon;
@@ -15,7 +15,7 @@ public class UI_WeaponSelected : MonoBehaviour
         {
             IsSelected[i] = false;
         }
-    } // 선택 유무 초기화
+    } // ???? ???? ??????
 
     private void Start()
     {
@@ -59,5 +59,5 @@ public class UI_WeaponSelected : MonoBehaviour
                 IsSelected[i] = false;
             }
         }
-    } // 무기를 선택했을 때
+    } // ?????? ???????? ??
 }

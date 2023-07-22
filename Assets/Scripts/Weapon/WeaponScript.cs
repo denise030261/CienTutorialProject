@@ -8,11 +8,12 @@ public class WeaponScript : MonoBehaviour
 
     public GameObject[] weapons;
     public int currentWeapon;
+    public int instantiatedWeapon;
     public GameObject weaponInstance;
 
     //private AudioSource audioSource;
     //public AudioClip attackClip;
-    public AudioSource[] audioSources; // 효과음 변수
+    public AudioSource[] audioSources; // ?????? ????
 
     private void Awake()
     {
@@ -27,7 +28,7 @@ public class WeaponScript : MonoBehaviour
         foreach (var audioSource in audioSources)
         {
             audioSource.enabled = false;
-        } // 효과음 비활성화
+        } // ?????? ????????
     }
 
     // Update is called once per frame
@@ -39,6 +40,8 @@ public class WeaponScript : MonoBehaviour
             {
                 Destroy(weaponInstance);
             }
+
+            instantiatedWeapon = currentWeapon;
 
             weaponInstance = Instantiate(weapons[currentWeapon], GetMousePosition(), Quaternion.identity);
 
@@ -63,7 +66,7 @@ public class WeaponScript : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (currentWeapon == 0 || currentWeapon == 3)
+            if (instantiatedWeapon == 0 || instantiatedWeapon == 3)
             {
                 Destroy(weaponInstance);
                 audioSources[0].enabled = false;
