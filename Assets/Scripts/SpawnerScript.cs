@@ -5,10 +5,15 @@ using UnityEngine;
 public class SpawnerScript : MonoBehaviour
 {
     public GameObject[] enemyPrefabs;
-    public float SpawnSpeed = 10f;
-    private int step = 0; // 스폰 단계
-    private int IntervalScore=1500;
-    private int PreviousScore= 1500;
+    public float SpawnSpeed;
+    private int step;
+    private int IntervalScore;
+    private int PreviousScore;
+
+    private void Start()
+    {
+        Init();
+    }
 
     private void Update()
     {
@@ -33,6 +38,15 @@ public class SpawnerScript : MonoBehaviour
             PreviousScore += IntervalScore;
         }
     }
+
+    public void Init()
+    {
+        SpawnSpeed = 10f;
+        step = 0;
+        IntervalScore=1500;
+        PreviousScore= 1500;
+    }
+
     private void OnEnable()
     {
         StartCoroutine(Spawn());
@@ -100,7 +114,7 @@ public class SpawnerScript : MonoBehaviour
                 Enemy.Instance.maxHP += 2;
                 Debug.Log("PreviousScore : " + PreviousScore + "IntervalScore : " + IntervalScore + "Step : " + step);
             }
-            //라운드, 적의 HP, MP, Damage, Spawn을 조절
+            //??????, ???? HP, MP, Damage, Spawn?? ????
 
             //float minX = CameraBound.Instance.Left + enemy.transform.localScale.x / 2;
             //float maxX = CameraBound.Instance.Right - enemy.transform.localScale.x / 2;

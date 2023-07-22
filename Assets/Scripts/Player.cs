@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 
     public static Player Instance { get; private set; } = null;
 
+    public GameObject spawner;
+
     private void Awake()
     {
         Instance = this;
@@ -20,15 +22,11 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        HP = maxHP;
-        MP = 0;
+        Init();
     }
+
     private void Update()
     {
-        if(HP<=0)
-        {
-            Time.timeScale = 0;
-        }
         if (MP == maxMP && Input.GetKeyDown(KeyCode.Alpha5))
         {
             GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -40,6 +38,14 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    public void Init()
+    {
+        HP = maxHP;
+        MP = 0;
+        score = 0;
+    }
+
     public int HP
     {
         get
@@ -56,6 +62,14 @@ public class Player : MonoBehaviour
             UI_Manager.Instance.SetUI_HP(hp, maxHP);
             if (hp <= 0)
             {
+                spawner.SetActive(false);
+
+                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                foreach (GameObject enemy in enemies)
+                {
+                    Destroy(enemy);
+                }
+
                 UI_Manager.Instance.SetScore(score);
                 UI_Manager.Instance.GameOverImage.SetActive(true);
             }

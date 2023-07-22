@@ -15,6 +15,8 @@ public class UI_Manager : MonoBehaviour
     public GameObject GameOverImage;
     public static UI_Manager Instance { get; private set; } = null;
 
+    public GameObject spawner;
+
     private void Awake()
     {
         Instance = this;
@@ -56,11 +58,14 @@ public class UI_Manager : MonoBehaviour
 
     public void OnClick_Retry()
     {
-        
+        Player.Instance.Init();
+        spawner.GetComponent<SpawnerScript>().Init();
+        spawner.SetActive(true);
+        GameOverImage.SetActive(false);
     } // ???? ????
 
     public void OnClick_LoadToMain()
     {
-        
+        SceneManager.LoadScene("mainmenu");
     } // ????????????
 }
