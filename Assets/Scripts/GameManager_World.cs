@@ -19,6 +19,9 @@ public class GameManager_World : MonoBehaviour
         Stage = PlayerPrefs.GetInt("Stage", 1);
         InitialHp = PlayerPrefs.GetInt("Hp", 5);
         InitialMp = PlayerPrefs.GetInt("Mp", 0);
+
+        AudioClip bgmClip = Resources.Load<AudioClip>("Music/BGM/BGM");
+        BGMManager.Instance.PlayBGM(bgmClip);
     }
 
     // Update is called once per frame

@@ -11,7 +11,9 @@ public class MainMenuController : MonoBehaviour
     private void Start()
     {
         highScoreText.text = "HIGH SCORE: " + PlayerPrefs.GetInt("HighScore", 0).ToString();
-        
+
+        AudioClip bgmClip = Resources.Load<AudioClip>("Music/BGM/BGM");
+        BGMManager.Instance.PlayBGM(bgmClip);
     }
 
     public void NewGame()

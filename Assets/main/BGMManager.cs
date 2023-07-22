@@ -1,6 +1,4 @@
-
-namespace BGMu
-{    
+  
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
@@ -12,12 +10,10 @@ public class BGMManager : MonoBehaviour
 
     private AudioSource audioSource;
     private AudioClip bgmClip;
-    private bool isBGMPlaying = false;
     private float bgmVolume = 1.0f; 
 
     private void Awake()
     {
-            isBGMPlaying = true;
             if (instance == null)
         {
             instance = this;
@@ -44,37 +40,26 @@ public class BGMManager : MonoBehaviour
         public void PlayBGM(AudioClip clip)
     {
         bgmClip = clip;
-        if (!isBGMPlaying)
-        {
+        bgmVolume = PlayerPrefs.GetFloat("BGM", 0.5f);
             audioSource.clip = bgmClip;
-            audioSource.volume = bgmVolume; 
+            audioSource.volume = PlayerPrefs.GetFloat("BGM", 0.5f); 
             audioSource.loop = true;
             audioSource.Play();
-            isBGMPlaying = true;
-        }
     }
 
     public void StopBGM()
     {
-        if (isBGMPlaying)
-        {
             audioSource.Stop();
-            isBGMPlaying = false;
-        }
     }
 
     public void SetBGMVolume(float volume)
     {
         bgmVolume = volume;
-        if (isBGMPlaying)
-        {
-            audioSource.volume = bgmVolume; 
-        }
+        audioSource.volume = bgmVolume; 
     }
 
     public float GetBGMVolume()
     {
         return bgmVolume;
     }
-}
 }
