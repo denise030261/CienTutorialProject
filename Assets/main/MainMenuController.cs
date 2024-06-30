@@ -50,10 +50,10 @@ public class MainMenuController : MonoBehaviour
         }
         else
         {
+
             Debug.LogError("Could not load the 'tuto' prefab.");
         }
     }
-
 
     public void QuitGame()
     {

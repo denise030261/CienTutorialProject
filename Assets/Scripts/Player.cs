@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     public int maxMP = 10;
     public int score = 0;
 
+    private AudioSource audioSource;
+    public AudioClip attackClips;
+
     public static Player Instance { get; private set; } = null;
 
     public GameObject spawner;
@@ -22,6 +25,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         Init();
     }
 
@@ -30,6 +34,10 @@ public class Player : MonoBehaviour
         if (MP == maxMP && Input.GetKeyDown(KeyCode.Alpha5))
         {
             GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+            audioSource.clip = attackClips;
+            audioSource.Play();
+            
 
             foreach (GameObject Enemy in Enemies)
             {

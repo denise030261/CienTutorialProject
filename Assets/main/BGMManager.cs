@@ -55,7 +55,7 @@ public class BGMManager : MonoBehaviour
     public void SetBGMVolume(float volume)
     {
         bgmVolume = volume;
-        audioSource.volume = bgmVolume; 
+        audioSource.volume = bgmVolume;
     }
 
     public float GetBGMVolume()

@@ -58,11 +58,6 @@ public class DustScript : Enemy
 
     private bool IsOutrange()
     {
-        /*return (transform.position.x - transform.localScale.x / 2 < CameraBound.Instance.Left)
-            || (transform.position.x + transform.localScale.x / 2 > CameraBound.Instance.Right)
-            || (transform.position.y + transform.localScale.y / 2 > CameraBound.Instance.Top)
-            || (transform.position.y - transform.localScale.y / 2 < CameraBound.Instance.Bottom);*/
-
         return (transform.position.x - transform.localScale.x / 2 < CameraBound.Instance.Left)
             || (transform.position.x + transform.localScale.x / 2 > CameraBound.Instance.Right)
             || (transform.position.y + 1.1 > CameraBound.Instance.Top)
