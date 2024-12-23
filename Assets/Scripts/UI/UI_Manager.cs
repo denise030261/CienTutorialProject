@@ -11,6 +11,10 @@ public class UI_Manager : MonoBehaviour
     public Text ScoreText;
     public Text highScoreText;
     public Text currentScoreText;
+    [SerializeField] Image EmotionImage;
+
+    [Tooltip("0번째는 100퍼, 1번째는 50퍼, 2번째는 25, 3번째는 0")]
+    [SerializeField] List<Sprite> EmotionImages = new List<Sprite>();
 
     public GameObject GameOverImage;
     public static UI_Manager Instance { get; private set; } = null;
@@ -35,6 +39,22 @@ public class UI_Manager : MonoBehaviour
     public void SetUI_HP(int current, int max)
     {
         HP_Image.fillAmount = (float)current / max;
+        if(HP_Image.fillAmount > 0.5f )
+        {
+            EmotionImage.sprite = EmotionImages[0];
+        }
+        else if(HP_Image.fillAmount > 0.25f)
+        {
+            EmotionImage.sprite = EmotionImages[1];
+        }
+        else if (HP_Image.fillAmount > 0f)
+        {
+            EmotionImage.sprite = EmotionImages[2];
+        }
+        else 
+        {
+            EmotionImage.sprite = EmotionImages[3];
+        }
     } // HP ????
 
     public void SetUI_MP(int current, int max)
