@@ -16,6 +16,27 @@ public class UI_Manager : MonoBehaviour
     [Tooltip("0번째는 100퍼, 1번째는 50퍼, 2번째는 25, 3번째는 0")]
     [SerializeField] List<Sprite> EmotionImages = new List<Sprite>();
 
+    [Header("Space Animation")]
+    [SerializeField]
+    Animator spaceAnimator;
+    [SerializeField]
+    GameObject spaceObject;
+
+    [Space(30)]
+    [Header("Skill Animation")]
+    [SerializeField]
+    Animator skillAnimator;
+    [SerializeField]
+    GameObject skillObject;
+
+    [Space(30)]
+    [Header("Warning Animation")]
+    [SerializeField]
+    Animator warningAnimator;
+    [SerializeField]
+    GameObject warningObject;
+
+    [Space(30)]
     public GameObject GameOverImage;
     public static UI_Manager Instance { get; private set; } = null;
 
@@ -24,6 +45,10 @@ public class UI_Manager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        spaceAnimator.enabled = false;
+        spaceObject.SetActive(false);
+        skillObject.SetActive(false);
+        warningObject.SetActive(false);
     }
 
     private void Update()
@@ -50,16 +75,30 @@ public class UI_Manager : MonoBehaviour
         else if (HP_Image.fillAmount > 0f)
         {
             EmotionImage.sprite = EmotionImages[2];
+            warningObject.SetActive(true);
+            warningAnimator.enabled = true;
         }
         else 
         {
             EmotionImage.sprite = EmotionImages[3];
+            warningObject.SetActive(false);
+            warningAnimator.enabled = false;
         }
     } // HP ????
 
     public void SetUI_MP(int current, int max)
     {
         MP_Image.fillAmount = (float)current / max;
+        if(MP_Image.fillAmount ==1)
+        {
+            spaceObject.SetActive(true);
+            spaceAnimator.enabled = true;
+        }
+        else
+        {
+            spaceObject.SetActive(false);
+            spaceAnimator.enabled = false;
+        }
     } // MP ????
 
     public void SetScore(int currentScore)
@@ -88,4 +127,14 @@ public class UI_Manager : MonoBehaviour
     {
         SceneManager.LoadScene("mainmenu");
     } // ????????????
+
+    public IEnumerator UI_Skill(float skillTime)
+    {
+        skillObject.SetActive(true);
+        skillAnimator.enabled = true;
+        Debug.Log("기술 사용");
+        yield return new WaitForSeconds(skillTime);
+        skillAnimator.enabled = false;
+        skillObject.SetActive(false);
+    }
 }

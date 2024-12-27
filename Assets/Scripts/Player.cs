@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip attackClips;
 
+    [SerializeField]
+    float skillTime = 3f;
+
     public static Player Instance { get; private set; } = null;
 
     public GameObject spawner;
@@ -37,7 +40,8 @@ public class Player : MonoBehaviour
 
             audioSource.clip = attackClips;
             audioSource.Play();
-            
+
+            StartCoroutine(UI_Manager.Instance.UI_Skill(skillTime));
 
             foreach (GameObject Enemy in Enemies)
             {
