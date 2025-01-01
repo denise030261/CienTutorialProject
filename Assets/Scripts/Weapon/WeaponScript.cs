@@ -29,6 +29,15 @@ public class WeaponScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager_World.Instance.bPause)
+        {
+            if (weaponInstance != null)
+            {
+                Destroy(weaponInstance);
+            }
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             if (weaponInstance != null)

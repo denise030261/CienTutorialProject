@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class GameManager_World : MonoBehaviour
 {
+    [SerializeField] GameObject pauseObject;
     public int Score;
     public int Stage;
     public int InitialHp;
     public int InitialMp;
+    public bool bPause;
 
     public static GameManager_World Instance { get; private set; } = null;
 
@@ -19,6 +21,8 @@ public class GameManager_World : MonoBehaviour
         Stage = PlayerPrefs.GetInt("Stage", 1);
         InitialHp = PlayerPrefs.GetInt("Hp", 5);
         InitialMp = PlayerPrefs.GetInt("Mp", 0);
+        pauseObject.SetActive(false);
+        bPause = false;
 
         AudioClip bgmClip = Resources.Load<AudioClip>("Music/BGM/BGM");
         BGMManager.Instance.PlayBGM(bgmClip);
@@ -29,17 +33,32 @@ public class GameManager_World : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            GameObject settingsPrefab = Resources.Load<GameObject>("optionscene");
+            bPause = true;
             Time.timeScale = 0;
 
-            if (settingsPrefab != null)
+            if (pauseObject != null)
             {
-                Instantiate(settingsPrefab);
+                pauseObject.SetActive(true);
             }
             else
             {
-                Debug.LogError("Could not load the 'optionscene' prefab.");
+                Debug.LogError("Could not load the pauseObject");
             }
+        }
+    }
+
+    public void OnClick_Pause()
+    {
+        Time.timeScale = 0;
+        bPause = true;
+
+        if (pauseObject != null)
+        {
+            pauseObject.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("Could not load the pauseObject");
         }
     }
 }

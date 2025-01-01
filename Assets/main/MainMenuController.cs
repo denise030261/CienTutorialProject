@@ -7,11 +7,15 @@ using UnityEngine.UI;
 public class MainMenuController : MonoBehaviour
 {
     public Text highScoreText;
+    [SerializeField] GameObject alertObject;
+    [SerializeField] GameObject optionObject;
 
     private void Start()
     {
         highScoreText.text = "HIGH SCORE: " + PlayerPrefs.GetInt("HighScore", 0).ToString();
 
+        alertObject.SetActive(false);
+        optionObject.SetActive(false);
         AudioClip bgmClip = Resources.Load<AudioClip>("Music/BGM/BGM");
         BGMManager.Instance.PlayBGM(bgmClip);
     }
@@ -28,30 +32,25 @@ public class MainMenuController : MonoBehaviour
 
     public void OpenSettings()
     {
-        GameObject settingsPrefab = Resources.Load<GameObject>("optionscene");
-
-        if (settingsPrefab != null)
+        if (optionObject != null)
         {
-            Instantiate(settingsPrefab);
+            optionObject.SetActive(true);
         }
         else
         {
-            Debug.LogError("Could not load the 'optionscene' prefab.");
+            Debug.LogError("Could not load the optionObject.");
         }
     }
 
-    public void Opentuto()
+    public void Opentuto(bool bCheck)
     {
-        GameObject settingsPrefab = Resources.Load<GameObject>("tuto");
-
-        if (settingsPrefab != null)
+        if (alertObject != null)
         {
-            Instantiate(settingsPrefab);
+            alertObject.SetActive(bCheck);
         }
         else
         {
-
-            Debug.LogError("Could not load the 'tuto' prefab.");
+            Debug.LogError("Could not load the alertObject.");
         }
     }
 
