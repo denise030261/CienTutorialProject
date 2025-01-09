@@ -2809,8 +2809,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Score
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: df1fe352f1720fc4ab79d3a310dcae2c, type: 2}
-  m_sharedMaterial: {fileID: 7111093308352048138, guid: df1fe352f1720fc4ab79d3a310dcae2c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3ac6bc383c81b7545ba9611358a06650, type: 2}
+  m_sharedMaterial: {fileID: 298593593781627755, guid: 3ac6bc383c81b7545ba9611358a06650, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5190,6 +5190,8 @@ MonoBehaviour:
   InitialHp: 0
   InitialMp: 0
   bPause: 0
+  startObject: {fileID: 0}
+  endObject: {fileID: 0}
 --- !u!114 &1747620467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5220,7 +5222,11 @@ MonoBehaviour:
   warningAnimator: {fileID: 950367896}
   warningObject: {fileID: 950367892}
   GameOverImage: {fileID: 1875032313}
+  recordObject: {fileID: 0}
+  recordButton: {fileID: 0}
   spawner: {fileID: 1060662775}
+  rankData: {fileID: 0}
+  inputField: {fileID: 0}
 --- !u!82 &1747620468
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5328,6 +5334,7 @@ GameObject:
   - component: {fileID: 1757937249}
   - component: {fileID: 1757937251}
   - component: {fileID: 1757937250}
+  - component: {fileID: 1757937252}
   m_Layer: 5
   m_Name: Text_Value
   m_TagString: Untagged
@@ -5377,8 +5384,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 12345
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: df1fe352f1720fc4ab79d3a310dcae2c, type: 2}
-  m_sharedMaterial: {fileID: 7111093308352048138, guid: df1fe352f1720fc4ab79d3a310dcae2c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3ac6bc383c81b7545ba9611358a06650, type: 2}
+  m_sharedMaterial: {fileID: 298593593781627755, guid: 3ac6bc383c81b7545ba9611358a06650, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5452,6 +5459,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757937248}
   m_CullTransparentMesh: 1
+--- !u!114 &1757937252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757937248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 50, y: -50}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1778153293
 GameObject:
   m_ObjectHideFlags: 0
