@@ -14,7 +14,7 @@ public class BGMManager : MonoBehaviour
 
     private void Awake()
     {
-            if (instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject); // 씬 변경 시에도 파괴되지 않도록 설정

@@ -38,9 +38,16 @@ public class UI_Manager : MonoBehaviour
 
     [Space(30)]
     public GameObject GameOverImage;
+
+    [Space(30)]
+    [SerializeField] private GameObject recordObject;
+    [SerializeField] Button recordButton;
     public static UI_Manager Instance { get; private set; } = null;
 
     public GameObject spawner;
+    private int score = 0;
+    [SerializeField] RankData rankData;
+    [SerializeField] InputField inputField;
 
     private void Awake()
     {
@@ -104,6 +111,7 @@ public class UI_Manager : MonoBehaviour
     public void SetScore(int currentScore)
     {
         int highScore = PlayerPrefs.GetInt("HighScore", 0);
+        score = currentScore;
 
         if (currentScore > highScore)
         {
@@ -121,12 +129,34 @@ public class UI_Manager : MonoBehaviour
         spawner.GetComponent<SpawnerScript>().Init();
         spawner.SetActive(true);
         GameOverImage.SetActive(false);
+        GameManager_World.Instance.bPause = false;
     } // ???? ????
 
     public void OnClick_LoadToMain()
     {
         SceneManager.LoadScene("mainmenu");
     } // ????????????
+
+    public void OnClick_Record(Text text)
+    {
+        recordObject.SetActive(true);
+        text.text = score.ToString();
+    }
+
+    public void OnClick_RecordScore(bool bRecord)
+    {
+        if(bRecord)
+        {
+            if (inputField.text == "")
+                inputField.text = "Guest";
+            rankData.rankList.Add(new RankData.RankEntry(score, inputField.text));
+            rankData.SortRanksDescending(); 
+            rankData.SaveToFile(); 
+
+            recordButton.enabled = false;
+        }
+        recordObject.SetActive(false);
+    }
 
     public IEnumerator UI_Skill(float skillTime)
     {

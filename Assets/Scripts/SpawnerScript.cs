@@ -10,6 +10,12 @@ public class SpawnerScript : MonoBehaviour
     private int IntervalScore;
     private int PreviousScore;
 
+    public static SpawnerScript Instance { get; private set; } = null;
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         Init();
@@ -47,22 +53,18 @@ public class SpawnerScript : MonoBehaviour
         PreviousScore= 1500;
     }
 
-    private void OnEnable()
-    {
-        StartCoroutine(Spawn());
-    }
-
     private void OnDisable()
     {
         StopAllCoroutines();
     }
 
-    private IEnumerator Spawn()
+    public IEnumerator Spawn()
     {
         yield return new WaitForSeconds(0);
         
-        while (enabled)
+        while (!GameManager_World.Instance.bPause)
         {
+            Debug.Log("start");
             GameObject enemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
             if(Player.Instance.score<350 && step==0)
             {

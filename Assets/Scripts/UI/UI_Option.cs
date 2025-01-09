@@ -8,11 +8,16 @@ public class UI_Option : MonoBehaviour
     public Slider slider;
 
     public Dropdown resolutionDropdown;
-    //public Toggle fullscreenToggle;
-    //public GameObject ToggleCheck;
+    public Toggle fullscreenToggle;
+    public GameObject ToggleCheck;
     public Text currentStateText;
 
     Resolution[] resolutionArray = new Resolution[3];
+    float curVolume = 0;
+    bool curFull = false;
+    int curHeight = 0;
+    int curWidth = 0;
+
 
     private void Awake()
     {
@@ -22,9 +27,13 @@ public class UI_Option : MonoBehaviour
     void Start()
     {
         InitializeResolutionOptions();
-        //fullscreenToggle.onValueChanged.AddListener(ToggleFullscreen);
+        fullscreenToggle.onValueChanged.AddListener(ToggleFullscreen);
 
-        //fullscreenToggle.isOn=Screen.fullScreenMode.Equals(FullScreenMode.FullScreenWindow) ? true : false; // FullScreen 여부
+        fullscreenToggle.isOn=Screen.fullScreenMode.Equals(FullScreenMode.FullScreenWindow) ? true : false; // FullScreen 여부
+        
+        curFull = Screen.fullScreen;
+        curHeight = Screen.height;
+        curWidth = Screen.width;
     }
 
     private void Update()
@@ -41,6 +50,7 @@ public class UI_Option : MonoBehaviour
     {
         slider.value = PlayerPrefs.GetFloat("BGM", 0.5f);
         slider.value = PlayerPrefs.GetFloat("SFX", 0.5f);
+        curVolume = slider.value;
     }
 
     void InitializeResolutionOptions()
@@ -53,7 +63,7 @@ public class UI_Option : MonoBehaviour
         foreach (Resolution resolution in resolutions)
         {
             string option = resolution.width + " x " + resolution.height;
-            if (Mathf.Approximately((float)resolution.width / resolution.height, 16f / 9f) && resolution.refreshRate == 60)
+            if (Mathf.Approximately((float)resolution.width / resolution.height, 16f / 9f) )
             {
                 resolutionArray[resolutionIndex] = resolution;
                 resolutionIndex++;
@@ -78,7 +88,7 @@ public class UI_Option : MonoBehaviour
             Resolution selectedResolution = resolutions[index];
             Screen.SetResolution(selectedResolution.width, selectedResolution.height, Screen.fullScreen);
 
-            /*int IsFullScreen;
+            int IsFullScreen;
 
             if (Screen.fullScreen)
             {
@@ -87,14 +97,14 @@ public class UI_Option : MonoBehaviour
             else
             {
                 IsFullScreen = 0;
-            }*/
-            //PlayerPrefs.SetInt("ResolutionFullScreen", IsFullScreen);
+            }
+            PlayerPrefs.SetInt("ResolutionFullScreen", IsFullScreen);
             PlayerPrefs.SetInt("ResolutionHeight", selectedResolution.height);
             PlayerPrefs.SetInt("ResolutionWidth", selectedResolution.width);
         }
     }
 
-    /*void ToggleFullscreen(bool isFullscreen)
+    void ToggleFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
 
@@ -108,5 +118,27 @@ public class UI_Option : MonoBehaviour
             IsFullScreen = 0;
         }
         PlayerPrefs.SetInt("ResolutionFullScreen", IsFullScreen);
-    }*/
+    }
+
+    public void OnClick_Previous()
+    {
+        PlayerPrefs.SetFloat("BGM", curVolume);
+        PlayerPrefs.SetFloat("SFX", curVolume);
+
+        if(curFull)
+            PlayerPrefs.SetInt("ResolutionFullScreen",1);
+        else
+            PlayerPrefs.SetInt("ResolutionFullScreen",0);
+
+        PlayerPrefs.SetInt("ResolutionHeight", curHeight);
+        PlayerPrefs.SetInt("ResolutionWidth", curWidth);
+        gameObject.SetActive(false);
+    }
+
+    public void OnClick_Save()
+    {
+        PlayerPrefs.SetFloat("BGM", slider.value);
+        PlayerPrefs.SetFloat("SFX", slider.value);
+        gameObject.SetActive(false);
+    }
 }

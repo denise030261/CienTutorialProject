@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager_World : MonoBehaviour
 {
@@ -11,18 +12,24 @@ public class GameManager_World : MonoBehaviour
 
     public static GameManager_World Instance { get; private set; } = null;
 
+    [Space(30)]
+    [Header("Animation")]
+    [SerializeField] GameObject startObject;
+    Animator startAnimator;
+    [SerializeField] GameObject endObject;
+    Animator endAnimator;
+
     private void Awake()
     {
         Instance = this;
+
+        startAnimator = startObject.GetComponent<Animator>();
+        endAnimator = endObject.GetComponent<Animator>(); 
     }
     void Start()
     {
-        Score = PlayerPrefs.GetInt("Score", 0);
-        Stage = PlayerPrefs.GetInt("Stage", 1);
-        InitialHp = PlayerPrefs.GetInt("Hp", 5);
-        InitialMp = PlayerPrefs.GetInt("Mp", 0);
-        pauseObject.SetActive(false);
-        bPause = false;
+        Init();
+        StartGame(true);
 
         AudioClip bgmClip = Resources.Load<AudioClip>("Music/BGM/BGM");
         BGMManager.Instance.PlayBGM(bgmClip);
@@ -60,5 +67,35 @@ public class GameManager_World : MonoBehaviour
         {
             Debug.LogError("Could not load the pauseObject");
         }
+    }
+
+    public void EndGame(bool bStart)
+    {
+        bPause = true;
+        endObject.SetActive(bStart);
+        endAnimator.enabled = bStart;
+    }
+
+    public void StartGame(bool bStart)
+    {
+        bPause = bStart;
+        startObject.SetActive(bStart);
+        startAnimator.enabled = bStart;
+        StartCoroutine(SpawnerScript.Instance.Spawn());
+    }
+
+    private void Init()
+    {
+        endObject.SetActive(false);
+        endAnimator.enabled = false;
+        startObject.SetActive(false);
+        startAnimator.enabled = false;
+
+        Score = PlayerPrefs.GetInt("Score", 0);
+        Stage = PlayerPrefs.GetInt("Stage", 1);
+        InitialHp = PlayerPrefs.GetInt("Hp", 5);
+        InitialMp = PlayerPrefs.GetInt("Mp", 0);
+        pauseObject.SetActive(false);
+        bPause = true;
     }
 }

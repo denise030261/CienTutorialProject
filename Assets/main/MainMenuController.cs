@@ -9,10 +9,12 @@ public class MainMenuController : MonoBehaviour
     public Text highScoreText;
     [SerializeField] GameObject alertObject;
     [SerializeField] GameObject optionObject;
-
+    [SerializeField] RankData rankData;
+    [SerializeField] GameObject contents;
+    [SerializeField] GameObject rankObject;
     private void Start()
     {
-        highScoreText.text = "HIGH SCORE: " + PlayerPrefs.GetInt("HighScore", 0).ToString();
+        //highScoreText.text = "HIGH SCORE: " + PlayerPrefs.GetInt("HighScore", 0).ToString();
 
         alertObject.SetActive(false);
         optionObject.SetActive(false);
@@ -69,5 +71,30 @@ public class MainMenuController : MonoBehaviour
     {
         Time.timeScale = 1;
         Destroy(gameObject);
+    }
+
+    public void OnClick_Rank()
+    {
+        rankObject.SetActive(true);
+        rankData.SortRanksDescending();
+        for (int i = 0; i < rankData.rankList.Count; i++)
+        {
+            if (i >= 20)
+                break;
+
+            GameObject contentObject = contents.transform.GetChild(i).gameObject;
+            Text rankText = contentObject.transform.GetChild(0).GetComponent<Text>();
+            rankText.text = (i + 1).ToString(); 
+            Text nameText = contentObject.transform.GetChild(1).GetComponent<Text>();
+            nameText.text = rankData.rankList[i].playerName;
+            Text scoreText = contentObject.transform.GetChild(2).GetComponent<Text>();
+            scoreText.text = rankData.rankList[i].score.ToString();
+        }
+        for(int i= rankData.rankList.Count;i<contents.transform.childCount;i++)
+        {
+            GameObject contentObject = contents.transform.GetChild(i).gameObject;
+            Text rankText = contentObject.transform.GetChild(0).GetComponent<Text>();
+            rankText.text = (i + 1).ToString();
+        }
     }
 }

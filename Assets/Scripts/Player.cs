@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
                 }
 
                 UI_Manager.Instance.SetScore(score);
-                UI_Manager.Instance.GameOverImage.SetActive(true);
+                GameManager_World.Instance.EndGame(true);
             }
             if (hp > maxHP)
             {
