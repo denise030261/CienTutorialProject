@@ -163,7 +163,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -869,7 +869,7 @@ MonoBehaviour:
   m_text: "\u30B2\u30FC\u30E0\u8A2D\u5B9A\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba91c67e801c82e438918ea4bb33e11a, type: 2}
-  m_sharedMaterial: {fileID: -8581014762231775000, guid: ba91c67e801c82e438918ea4bb33e11a, type: 2}
+  m_sharedMaterial: {fileID: -2126882201751896073, guid: ba91c67e801c82e438918ea4bb33e11a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1438,7 +1438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6292081105768510045
 RectTransform:
   m_ObjectHideFlags: 0
