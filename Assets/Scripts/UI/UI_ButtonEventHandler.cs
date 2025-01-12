@@ -15,6 +15,7 @@ public class UI_ButtonEventHandler : MonoBehaviour
     {
         Animator animator = GetComponent<Animator>();
         animator.enabled = true;
+        animator.updateMode = AnimatorUpdateMode.UnscaledTime;
         animator.SetBool("bExit", bCheck);
         Debug.Log($"Animator State: bExit = {bCheck}");
     }

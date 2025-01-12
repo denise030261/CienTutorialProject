@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (MP == maxMP && Input.GetKeyDown(KeyCode.Alpha5))
+        if (MP == maxMP && Input.GetKeyDown(KeyCode.Space))
         {
             GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
