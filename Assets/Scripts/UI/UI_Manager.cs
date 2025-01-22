@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.EventSystems;
 
 public class UI_Manager : MonoBehaviour
 {
-    public Image HP_Image;
-    public Image MP_Image;
-    public Text ScoreText;
-    public Text highScoreText;
-    public Text currentScoreText;
+    public Slider HPValueSlider;
+    public Slider MPValueSlider;
+    public TMP_Text ScoreText;
+    public TMP_Text ScoreEffectText;
+    public TMP_Text highScoreText;
+    public TMP_Text currentScoreText;
+    public TMP_Text resultHighScoreText;
     [SerializeField] Image EmotionImage;
 
     [Tooltip("0번째는 100퍼, 1번째는 50퍼, 2번째는 25, 3번째는 0")]
@@ -47,7 +51,8 @@ public class UI_Manager : MonoBehaviour
     public GameObject spawner;
     private int score = 0;
     [SerializeField] RankData rankData;
-    [SerializeField] InputField inputField;
+    [SerializeField] TMP_InputField inputField;
+    [SerializeField] EventTrigger buttonEventHandler;
 
     private void Awake()
     {
@@ -60,7 +65,8 @@ public class UI_Manager : MonoBehaviour
 
     private void Update()
     {
-        ScoreText.text = "Score : " + Player.Instance.score.ToString();
+        ScoreText.text = Player.Instance.score.ToString();
+        ScoreEffectText.text = Player.Instance.score.ToString();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("Esc ?????? ??????????");
@@ -70,16 +76,16 @@ public class UI_Manager : MonoBehaviour
 
     public void SetUI_HP(int current, int max)
     {
-        HP_Image.fillAmount = (float)current / max;
-        if(HP_Image.fillAmount > 0.5f )
+        HPValueSlider.value = (float)current / max;
+        if(HPValueSlider.value > 0.5f )
         {
             EmotionImage.sprite = EmotionImages[0];
         }
-        else if(HP_Image.fillAmount > 0.25f)
+        else if(HPValueSlider.value > 0.25f)
         {
             EmotionImage.sprite = EmotionImages[1];
         }
-        else if (HP_Image.fillAmount > 0f)
+        else if (HPValueSlider.value > 0f)
         {
             EmotionImage.sprite = EmotionImages[2];
             warningObject.SetActive(true);
@@ -95,8 +101,8 @@ public class UI_Manager : MonoBehaviour
 
     public void SetUI_MP(int current, int max)
     {
-        MP_Image.fillAmount = (float)current / max;
-        if(MP_Image.fillAmount ==1)
+        MPValueSlider.value = (float)current / max;
+        if(MPValueSlider.value == 1)
         {
             spaceObject.SetActive(true);
             spaceAnimator.enabled = true;
@@ -119,8 +125,8 @@ public class UI_Manager : MonoBehaviour
             highScore = currentScore;
         }
 
-        highScoreText.text = "HIGH SCORE: " + highScore.ToString();
-        currentScoreText.text = "CURRENT SCORE: " + currentScore.ToString();
+        highScoreText.text = highScore.ToString();
+        currentScoreText.text = currentScore.ToString();
     }
 
     public void OnClick_Retry()
@@ -137,7 +143,7 @@ public class UI_Manager : MonoBehaviour
         SceneManager.LoadScene("mainmenu");
     } // ????????????
 
-    public void OnClick_Record(Text text)
+    public void OnClick_Record(TMP_Text text)
     {
         recordObject.SetActive(true);
         text.text = score.ToString();
@@ -151,11 +157,13 @@ public class UI_Manager : MonoBehaviour
                 inputField.text = "Guest";
             rankData.rankList.Add(new RankData.RankEntry(score, inputField.text));
             rankData.SortRanksDescending(); 
-            rankData.SaveToFile(); 
+            rankData.SaveToFile();
+            resultHighScoreText.text = currentScoreText.text;
 
             recordButton.enabled = false;
         }
         recordObject.SetActive(false);
+        buttonEventHandler.enabled = false;
     }
 
     public IEnumerator UI_Skill(float skillTime)

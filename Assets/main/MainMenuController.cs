@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
-    public Text highScoreText;
     [SerializeField] GameObject alertObject;
     [SerializeField] GameObject optionObject;
     [SerializeField] RankData rankData;
@@ -14,8 +14,6 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] GameObject rankObject;
     private void Start()
     {
-        //highScoreText.text = "HIGH SCORE: " + PlayerPrefs.GetInt("HighScore", 0).ToString();
-
         alertObject.SetActive(false);
         optionObject.SetActive(false);
         AudioClip bgmClip = Resources.Load<AudioClip>("Music/BGM/BGM");
@@ -83,17 +81,17 @@ public class MainMenuController : MonoBehaviour
                 break;
 
             GameObject contentObject = contents.transform.GetChild(i).gameObject;
-            Text rankText = contentObject.transform.GetChild(0).GetComponent<Text>();
-            rankText.text = (i + 1).ToString(); 
-            Text nameText = contentObject.transform.GetChild(1).GetComponent<Text>();
+            TMP_Text rankText = contentObject.transform.GetChild(0).GetComponent<TMP_Text>();
+            rankText.text = (i + 1).ToString();
+            TMP_Text nameText = contentObject.transform.GetChild(1).GetComponent<TMP_Text>();
             nameText.text = rankData.rankList[i].playerName;
-            Text scoreText = contentObject.transform.GetChild(2).GetComponent<Text>();
+            TMP_Text scoreText = contentObject.transform.GetChild(2).GetComponent<TMP_Text>();
             scoreText.text = rankData.rankList[i].score.ToString();
         }
         for(int i= rankData.rankList.Count;i<contents.transform.childCount;i++)
         {
             GameObject contentObject = contents.transform.GetChild(i).gameObject;
-            Text rankText = contentObject.transform.GetChild(0).GetComponent<Text>();
+            TMP_Text rankText = contentObject.transform.GetChild(0).GetComponent<TMP_Text>();
             rankText.text = (i + 1).ToString();
         }
     }
