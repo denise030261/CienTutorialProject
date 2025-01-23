@@ -510,7 +510,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 99999
+  m_text: '-'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 473d4ca8b72597e42a284df3d82c7d14, type: 2}
   m_sharedMaterial: {fileID: 1993097398228593175, guid: 473d4ca8b72597e42a284df3d82c7d14, type: 2}
@@ -887,8 +887,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 4}
-  m_SizeDelta: {x: 1174, y: 800}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1174, y: 932}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &4281598332578771527
 CanvasRenderer:
@@ -911,14 +911,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1242,7 +1242,6 @@ RectTransform:
   m_Children:
   - {fileID: 3744871700354839569}
   - {fileID: 8104572671227946585}
-  - {fileID: 2429065523841505873}
   - {fileID: 500033352265248521}
   m_Father: {fileID: 5248619435340354051}
   m_RootOrder: -1
@@ -4131,6 +4130,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2429065523841505873}
   - {fileID: 7319067226820311249}
   - {fileID: 7666523960696589427}
   - {fileID: 5572784388331121902}
@@ -4157,7 +4157,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.00014425395}
-  m_SizeDelta: {x: 0, y: 1500}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6108260982993455854
 MonoBehaviour:
@@ -4523,7 +4523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.15383482, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5686,7 +5686,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 99999
+  m_text: '-'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 473d4ca8b72597e42a284df3d82c7d14, type: 2}
   m_sharedMaterial: {fileID: 1993097398228593175, guid: 473d4ca8b72597e42a284df3d82c7d14, type: 2}
@@ -6530,7 +6530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.023584902, b: 0.023584902, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6590,8 +6590,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4293099401871986619}
   m_HandleRect: {fileID: 2128975315908898679}
   m_Direction: 2
-  m_Value: 0.9999998
-  m_Size: 0.53333336
+  m_Value: 1
+  m_Size: 0.43653396
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9042,12 +9042,12 @@ RectTransform:
   - {fileID: 8833651505661246929}
   - {fileID: 6420451805206058769}
   - {fileID: 5590059479756057099}
-  m_Father: {fileID: 3261692238305234850}
+  m_Father: {fileID: 1885150315878214179}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -148}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1174, y: 135}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &7777159281070064189
@@ -9673,7 +9673,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3042\u3048\u3044\u304A\u3046"
+  m_text: '-'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 473d4ca8b72597e42a284df3d82c7d14, type: 2}
   m_sharedMaterial: {fileID: 1993097398228593175, guid: 473d4ca8b72597e42a284df3d82c7d14, type: 2}
@@ -10156,7 +10156,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3042\u3048\u3044\u304A\u3046"
+  m_text: '-'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 473d4ca8b72597e42a284df3d82c7d14, type: 2}
   m_sharedMaterial: {fileID: 1993097398228593175, guid: 473d4ca8b72597e42a284df3d82c7d14, type: 2}

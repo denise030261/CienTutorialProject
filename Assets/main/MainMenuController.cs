@@ -75,24 +75,24 @@ public class MainMenuController : MonoBehaviour
     {
         rankObject.SetActive(true);
         rankData.SortRanksDescending();
-        for (int i = 0; i < rankData.rankList.Count; i++)
+        for (int i = 1; i <= rankData.rankList.Count; i++)
         {
-            if (i >= 20)
+            if (i > 20)
                 break;
 
             GameObject contentObject = contents.transform.GetChild(i).gameObject;
             TMP_Text rankText = contentObject.transform.GetChild(0).GetComponent<TMP_Text>();
-            rankText.text = (i + 1).ToString();
+            rankText.text = (i).ToString();
             TMP_Text nameText = contentObject.transform.GetChild(1).GetComponent<TMP_Text>();
             nameText.text = rankData.rankList[i].playerName;
             TMP_Text scoreText = contentObject.transform.GetChild(2).GetComponent<TMP_Text>();
             scoreText.text = rankData.rankList[i].score.ToString();
         }
-        for(int i= rankData.rankList.Count;i<contents.transform.childCount;i++)
+        for (int i = rankData.rankList.Count + 1; i < contents.transform.childCount; i++)
         {
             GameObject contentObject = contents.transform.GetChild(i).gameObject;
             TMP_Text rankText = contentObject.transform.GetChild(0).GetComponent<TMP_Text>();
-            rankText.text = (i + 1).ToString();
+            rankText.text = (i).ToString();
         }
     }
 }
