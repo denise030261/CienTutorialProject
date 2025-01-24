@@ -7,6 +7,7 @@ TagManager:
   - Stain
   - Enemy
   - Dish
+  - Show
   layers:
   - Default
   - TransparentFX

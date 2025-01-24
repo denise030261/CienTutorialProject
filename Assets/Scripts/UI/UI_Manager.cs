@@ -131,17 +131,20 @@ public class UI_Manager : MonoBehaviour
 
     public void OnClick_Retry()
     {
-        Player.Instance.Init();
-        spawner.GetComponent<SpawnerScript>().Init();
-        spawner.SetActive(true);
-        GameOverImage.SetActive(false);
-        GameManager_World.Instance.bPause = false;
+        SceneManager.LoadScene("SampleScene");
     } // ???? ????
 
     public void OnClick_LoadToMain()
     {
-        SceneManager.LoadScene("mainmenu");
+        StartCoroutine(LoadMainMenu()); 
     } // ????????????
+
+    IEnumerator LoadMainMenu()
+    {
+        GameManager_World.Instance.showAnimator.SetBool("isShow", false);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("mainmenu");
+    }
 
     public void OnClick_Record(TMP_Text text)
     {

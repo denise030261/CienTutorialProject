@@ -12,6 +12,11 @@ public class AnimationEvent : MonoBehaviour
     public void EndAnimation()
     {
         GameManager_World.Instance.EndGame(false);
-        UI_Manager.Instance.GameOverImage.SetActive(true);
     }
+
+    public void CloseObject()
+    {
+        gameObject.SetActive(false);
+    }
+
 }

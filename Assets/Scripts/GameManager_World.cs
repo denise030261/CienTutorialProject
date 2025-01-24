@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +20,7 @@ public class GameManager_World : MonoBehaviour
     Animator startAnimator;
     [SerializeField] GameObject endObject;
     Animator endAnimator;
+    public Animator showAnimator;
 
     private void Awake()
     {
@@ -31,8 +34,9 @@ public class GameManager_World : MonoBehaviour
         Init();
         StartGame(true);
 
-        AudioClip bgmClip = Resources.Load<AudioClip>("Music/BGM/BGM");
+        AudioClip bgmClip = Resources.Load<AudioClip>("Music/BGM/BGM_Play");
         BGMManager.Instance.PlayBGM(bgmClip);
+        showAnimator.SetBool("isShow", true);
     }
 
     // Update is called once per frame
@@ -71,7 +75,23 @@ public class GameManager_World : MonoBehaviour
 
     public void EndGame(bool bStart)
     {
+        if(!bStart) 
+            showAnimator.SetBool("isShow", false);
         bPause = true;
+        StartCoroutine(ShowResultScreen(bStart));
+    }
+
+    IEnumerator ShowResultScreen(bool bStart)
+    {
+        if (!bStart)
+        {
+            yield return new WaitForSeconds(1);
+            showAnimator.SetBool("isShow", true);
+            // 시간 필요하면 여기에 적기
+            UI_Manager.Instance.GameOverImage.SetActive(true);
+            AudioClip bgmClip = Resources.Load<AudioClip>("Music/BGM/BGM_Result");
+            BGMManager.Instance.PlayBGM(bgmClip);
+        }
         endObject.SetActive(bStart);
         endAnimator.enabled = bStart;
     }

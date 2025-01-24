@@ -38,8 +38,7 @@ public class UI_Option : MonoBehaviour
 
     private void Update()
     {
-        PlayerPrefs.SetFloat("BGM", slider.value);
-        PlayerPrefs.SetFloat("SFX", slider.value);
+        BGMManager.Instance.audioSource.volume = slider.value;
     }
     private void OnEnable()
     {
@@ -133,6 +132,7 @@ public class UI_Option : MonoBehaviour
         PlayerPrefs.SetInt("ResolutionHeight", curHeight);
         PlayerPrefs.SetInt("ResolutionWidth", curWidth);
         gameObject.SetActive(false);
+        BGMManager.Instance.audioSource.volume = curVolume;
     }
 
     public void OnClick_Save()

@@ -2,15 +2,18 @@
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
+using UnityEngine.UI;
 
 public class BGMManager : MonoBehaviour
 {
     private static BGMManager instance;
     public static BGMManager Instance { get { return instance; } }
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     private AudioClip bgmClip;
-    private float bgmVolume = 1.0f; 
+    private float bgmVolume = 1.0f;
+
+    [SerializeField] Slider audioSlider;
 
     private void Awake()
     {
@@ -29,15 +32,11 @@ public class BGMManager : MonoBehaviour
 
        private void Start()
         {
-            bgmVolume = PlayerPrefs.GetFloat("BGM", 0.5f);    
+        Debug.Log(PlayerPrefs.GetFloat("BGM", 0.5f));
+        audioSource.volume = PlayerPrefs.GetFloat("BGM", 0.5f);
         }
 
-        private void Update()
-        {
-            PlayerPrefs.SetFloat("BGM", audioSource.volume);
-        }
-
-        public void PlayBGM(AudioClip clip)
+    public void PlayBGM(AudioClip clip)
     {
         bgmClip = clip;
         bgmVolume = PlayerPrefs.GetFloat("BGM", 0.5f);

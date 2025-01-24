@@ -16,17 +16,33 @@ public class MainMenuController : MonoBehaviour
     {
         alertObject.SetActive(false);
         optionObject.SetActive(false);
-        AudioClip bgmClip = Resources.Load<AudioClip>("Music/BGM/BGM");
+        AudioClip bgmClip = Resources.Load<AudioClip>("Music/BGM/BGM_MainMenu2");
         BGMManager.Instance.PlayBGM(bgmClip);
+
+        GameStartShowAnimation.Instance.showObject = GameObject.FindWithTag("Show");
+        GameStartShowAnimation.Instance.showAnimator = GameStartShowAnimation.Instance.showObject.GetComponent<Animator>();
+        if (!GameStartShowAnimation.Instance.startAnimation)
+        {
+            GameStartShowAnimation.Instance.showObject.SetActive(false);
+            GameStartShowAnimation.Instance.startAnimation = true;
+        }
     }
 
     public void NewGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        StartCoroutine(LoadGame());
     }
 
     public void ContinueGame()
     {
+        StartCoroutine(LoadGame());
+    }
+
+    IEnumerator LoadGame()
+    {
+        GameStartShowAnimation.Instance.showObject.SetActive(true);
+        GameStartShowAnimation.Instance.showAnimator.SetBool("isShow", false);
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene("SampleScene");
     }
 
@@ -75,24 +91,30 @@ public class MainMenuController : MonoBehaviour
     {
         rankObject.SetActive(true);
         rankData.SortRanksDescending();
-        for (int i = 1; i <= rankData.rankList.Count; i++)
+        for (int i = 0; i < rankData.rankList.Count; i++)
         {
             if (i > 20)
                 break;
 
-            GameObject contentObject = contents.transform.GetChild(i).gameObject;
+            GameObject contentObject = contents.transform.GetChild(i+1).gameObject;
             TMP_Text rankText = contentObject.transform.GetChild(0).GetComponent<TMP_Text>();
-            rankText.text = (i).ToString();
+            rankText.text = (i + 1).ToString();
             TMP_Text nameText = contentObject.transform.GetChild(1).GetComponent<TMP_Text>();
             nameText.text = rankData.rankList[i].playerName;
             TMP_Text scoreText = contentObject.transform.GetChild(2).GetComponent<TMP_Text>();
             scoreText.text = rankData.rankList[i].score.ToString();
         }
-        for (int i = rankData.rankList.Count + 1; i < contents.transform.childCount; i++)
+        for (int i = rankData.rankList.Count; i < contents.transform.childCount; i++)
         {
-            GameObject contentObject = contents.transform.GetChild(i).gameObject;
+            if (i+1>20)
+                return;
+            GameObject contentObject = contents.transform.GetChild(i + 1).gameObject;
             TMP_Text rankText = contentObject.transform.GetChild(0).GetComponent<TMP_Text>();
-            rankText.text = (i).ToString();
+            rankText.text = (i + 1).ToString();
+            TMP_Text nameText = contentObject.transform.GetChild(1).GetComponent<TMP_Text>();
+            nameText.text = "-";
+            TMP_Text scoreText = contentObject.transform.GetChild(2).GetComponent<TMP_Text>();
+            scoreText.text = "-";
         }
     }
 }
