@@ -25,6 +25,7 @@ public class UI_WeaponSelected : MonoBehaviour
         {
             animators[i].enabled = false;
         }
+        animators[0].Rebind();
         animators[0].enabled = true;
     }
     // Update is called once per frame
@@ -37,6 +38,7 @@ public class UI_WeaponSelected : MonoBehaviour
             {
                 animators[i].enabled = false;
             }
+            animators[0].Rebind();
             animators[0].enabled = true;
             SelectedSlot(0);
         }
@@ -47,6 +49,7 @@ public class UI_WeaponSelected : MonoBehaviour
             {
                 animators[i].enabled = false;
             }
+            animators[1].Rebind();
             animators[1].enabled = true;
             SelectedSlot(1);
         }
@@ -57,6 +60,7 @@ public class UI_WeaponSelected : MonoBehaviour
             {
                 animators[i].enabled = false;
             }
+            animators[2].Rebind();
             animators[2].enabled = true;
             SelectedSlot(2);
         }
@@ -67,6 +71,7 @@ public class UI_WeaponSelected : MonoBehaviour
             {
                 animators[i].enabled = false;
             }
+            animators[3].Rebind();
             animators[3].enabled = true;
             SelectedSlot(3);
         }
