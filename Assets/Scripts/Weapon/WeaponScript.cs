@@ -14,11 +14,15 @@ public class WeaponScript : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip[] attackClips;
 
+    [SerializeField] private UI_WeaponSelected weaponSelected;
+    private int selectNum;
+
     private void Awake()
     {
         Instance = this;
         audioSource = GetComponent<AudioSource>();
     }
+
     // Start is called before the first frame update
     void Start()
     {

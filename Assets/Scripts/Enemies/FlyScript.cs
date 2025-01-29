@@ -40,7 +40,7 @@ public class FlyScript : Enemy
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Contains("Flapper"))
+        if (collision.gameObject.name.Contains("UseFlapper"))
         {
             hp -= 1;
 

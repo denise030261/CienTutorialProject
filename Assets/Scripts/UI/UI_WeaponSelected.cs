@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,10 @@ public class UI_WeaponSelected : MonoBehaviour
     public Animator[] animators;
     private bool[] IsSelected = new bool[4];
     public static UI_WeaponSelected Instance { get; private set; } = null;
+
+    public GameObject[] weapons;
+    public GameObject weaponInstance;
+    public int selectWeapon;
 
     private void Awake()
     {
@@ -27,10 +32,17 @@ public class UI_WeaponSelected : MonoBehaviour
         }
         animators[0].Rebind();
         animators[0].enabled = true;
+        selectWeapon = 0;
+        weaponInstance = Instantiate(weapons[0], GetMousePosition(), Quaternion.identity); // Init Weapon
     }
     // Update is called once per frame
     void Update()
     {
+        if (weaponInstance != null)
+        {
+            weaponInstance.transform.position = GetMousePosition();
+        } // Move Weapon
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             WeaponScript.Instance.currentWeapon = 0;
@@ -38,9 +50,7 @@ public class UI_WeaponSelected : MonoBehaviour
             {
                 animators[i].enabled = false;
             }
-            animators[0].Rebind();
-            animators[0].enabled = true;
-            SelectedSlot(0);
+            ChangeWeapon(0);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
@@ -49,9 +59,7 @@ public class UI_WeaponSelected : MonoBehaviour
             {
                 animators[i].enabled = false;
             }
-            animators[1].Rebind();
-            animators[1].enabled = true;
-            SelectedSlot(1);
+            ChangeWeapon(1);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
@@ -60,9 +68,7 @@ public class UI_WeaponSelected : MonoBehaviour
             {
                 animators[i].enabled = false;
             }
-            animators[2].Rebind();
-            animators[2].enabled = true;
-            SelectedSlot(2);
+            ChangeWeapon(2);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
@@ -71,11 +77,33 @@ public class UI_WeaponSelected : MonoBehaviour
             {
                 animators[i].enabled = false;
             }
-            animators[3].Rebind();
-            animators[3].enabled = true;
-            SelectedSlot(3);
+            ChangeWeapon(3);
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Destroy(weaponInstance);
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            weaponInstance = Instantiate(weapons[selectWeapon], GetMousePosition(), Quaternion.identity);
         }
     }
+
+    void ChangeWeapon(int weapon)
+    {
+        if (weaponInstance != null)
+        {
+            Destroy(weaponInstance);
+        }
+        weaponInstance = Instantiate(weapons[weapon], GetMousePosition(), Quaternion.identity);
+
+        animators[weapon].Rebind();
+        animators[weapon].enabled = true;
+        selectWeapon = weapon;
+        SelectedSlot(weapon);
+    }
+
     void SelectedSlot(int Selected)
     {
         for (int i = 0; i < 4; i++)
@@ -91,4 +119,14 @@ public class UI_WeaponSelected : MonoBehaviour
             }
         }
     } // ?????? ???????? ??
+
+    private Vector3 GetMousePosition()
+    {
+        Vector3 position = Input.mousePosition;
+        position = Camera.main.ScreenToWorldPoint(position);
+        position.z = 0;
+
+        return position;
+    }
+
 }

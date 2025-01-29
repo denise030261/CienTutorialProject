@@ -31,7 +31,7 @@ public class DustScript : Enemy
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Contains("Cleaner"))
+        if (collision.gameObject.name.Contains("UseCleaner"))
         {
             if (timer <= 0f)
             {

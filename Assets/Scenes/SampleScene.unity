@@ -302,10 +302,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 276372239234645610, guid: 277de2ac764ae4797815a1d65e192839, type: 3}
-  - {fileID: 1721909664300617278, guid: 01b6625d6823e419d8f8d13240541d29, type: 3}
-  - {fileID: 8926108909792382787, guid: b49201a1b3160444ab1e6b673db234d8, type: 3}
-  - {fileID: 8926108909792382787, guid: 1318c0e277ca36848bba0e6b34b83769, type: 3}
+  - {fileID: 276372239234645610, guid: 7f593e52f0208cf4ca0b6f69e64520b9, type: 3}
+  - {fileID: 1721909664300617278, guid: 4010bc3df0cd1a5468c9036a992012cd, type: 3}
+  - {fileID: 8926108909792382787, guid: bf2f95f6c5b27354f8738fc92276f8b3, type: 3}
+  - {fileID: 8926108909792382787, guid: de40224390da21242a2a0fb89b2f4086, type: 3}
   currentWeapon: 1
   instantiatedWeapon: 0
   weaponInstance: {fileID: 0}
@@ -314,6 +314,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: af239734ee5a53b4db30a1c83a9aa7e3, type: 3}
   - {fileID: 8300000, guid: aea3a8af6d061f245987e192e1f2595f, type: 3}
   - {fileID: 8300000, guid: fc9bcc6485dee1d4b9c5ceb46ffb529d, type: 3}
+  weaponSelected: {fileID: 1387790167}
 --- !u!4 &79267577
 Transform:
   m_ObjectHideFlags: 0
@@ -6294,6 +6295,11 @@ MonoBehaviour:
   - {fileID: 1062900034}
   - {fileID: 1503036192}
   - {fileID: 1817359394}
+  weapons:
+  - {fileID: 276372239234645610, guid: 277de2ac764ae4797815a1d65e192839, type: 3}
+  - {fileID: 1721909664300617278, guid: 01b6625d6823e419d8f8d13240541d29, type: 3}
+  - {fileID: 8926108909792382787, guid: b49201a1b3160444ab1e6b673db234d8, type: 3}
+  - {fileID: 8926108909792382787, guid: 1318c0e277ca36848bba0e6b34b83769, type: 3}
 --- !u!114 &1387790168
 MonoBehaviour:
   m_ObjectHideFlags: 0

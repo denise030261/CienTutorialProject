@@ -15,7 +15,7 @@ public class GarbageScript : Enemy
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Contains("Hand"))
+        if (collision.gameObject.name.Contains("UseHand"))
         {
             hp -= 1;
 
