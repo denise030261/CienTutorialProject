@@ -18,38 +18,25 @@ public class UI_Option : MonoBehaviour
     int curHeight = 0;
     int curWidth = 0;
 
-
-    private void Awake()
-    {
-        CurrentState();
-    }
-
     void Start()
     {
         InitializeResolutionOptions();
         fullscreenToggle.onValueChanged.AddListener(ToggleFullscreen);
-
-        fullscreenToggle.isOn=Screen.fullScreenMode.Equals(FullScreenMode.FullScreenWindow) ? true : false; // FullScreen 여부
-        
-        curFull = Screen.fullScreen;
-        curHeight = Screen.height;
-        curWidth = Screen.width;
     }
 
-    private void Update()
-    {
-        BGMManager.Instance.audioSource.volume = slider.value;
-    }
     private void OnEnable()
     {
-        CurrentState();
+        LoadSettings();
     }
-
-    private void CurrentState()
+    void LoadSettings()
     {
-        slider.value = PlayerPrefs.GetFloat("BGM", 0.5f);
-        slider.value = PlayerPrefs.GetFloat("SFX", 0.5f);
-        curVolume = slider.value;
+        curHeight = Screen.height;
+        curWidth = Screen.width;
+        curFull = Screen.fullScreen;
+        curVolume = PlayerPrefs.GetFloat("BGM", 0.5f);
+
+        slider.value = curVolume;
+        fullscreenToggle.isOn = curFull;
     }
 
     void InitializeResolutionOptions()
@@ -62,7 +49,7 @@ public class UI_Option : MonoBehaviour
         foreach (Resolution resolution in resolutions)
         {
             string option = resolution.width + " x " + resolution.height;
-            if (Mathf.Approximately((float)resolution.width / resolution.height, 16f / 9f) )
+            if (Mathf.Approximately((float)resolution.width / resolution.height, 16f / 9f) && resolution.refreshRateRatio.numerator==60)
             {
                 resolutionArray[resolutionIndex] = resolution;
                 resolutionIndex++;
@@ -71,11 +58,16 @@ public class UI_Option : MonoBehaviour
                 if (Screen.width == resolution.width)
                 {
                     resolutionDropdown.value = resolutionIndex;
-                } //현재 해상도 상태
+                } 
             }
         }
 
         resolutionDropdown.onValueChanged.AddListener(ChangeResolution);
+    }
+
+    private void Update()
+    {
+        BGMManager.Instance.audioSource.volume = slider.value;
     }
 
     void ChangeResolution(int index)
@@ -86,59 +78,50 @@ public class UI_Option : MonoBehaviour
         {
             Resolution selectedResolution = resolutions[index];
             Screen.SetResolution(selectedResolution.width, selectedResolution.height, Screen.fullScreen);
-
-            int IsFullScreen;
-
-            if (Screen.fullScreen)
-            {
-                IsFullScreen = 1;
-            }
-            else
-            {
-                IsFullScreen = 0;
-            }
-            PlayerPrefs.SetInt("ResolutionFullScreen", IsFullScreen);
-            PlayerPrefs.SetInt("ResolutionHeight", selectedResolution.height);
-            PlayerPrefs.SetInt("ResolutionWidth", selectedResolution.width);
         }
     }
 
     void ToggleFullscreen(bool isFullscreen)
     {
-        Screen.fullScreen = isFullscreen;
-
-        int IsFullScreen;
         if (isFullscreen)
         {
-            IsFullScreen = 1;
+            Screen.SetResolution(Screen.width, Screen.height, FullScreenMode.FullScreenWindow);
         }
         else
         {
-            IsFullScreen = 0;
+            // 창 모드 설정
+            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, FullScreenMode.Windowed);
         }
-        PlayerPrefs.SetInt("ResolutionFullScreen", IsFullScreen);
     }
+
 
     public void OnClick_Previous()
     {
         PlayerPrefs.SetFloat("BGM", curVolume);
         PlayerPrefs.SetFloat("SFX", curVolume);
 
-        if(curFull)
-            PlayerPrefs.SetInt("ResolutionFullScreen",1);
-        else
-            PlayerPrefs.SetInt("ResolutionFullScreen",0);
-
-        PlayerPrefs.SetInt("ResolutionHeight", curHeight);
-        PlayerPrefs.SetInt("ResolutionWidth", curWidth);
-        gameObject.SetActive(false);
+        fullscreenToggle.isOn = curFull;
+        Screen.SetResolution(curWidth, curHeight, curFull? FullScreenMode.FullScreenWindow: FullScreenMode.Windowed);
         BGMManager.Instance.audioSource.volume = curVolume;
+
+        if (curHeight == 720)
+            resolutionDropdown.value = 0;
+        else if(curHeight==900)
+            resolutionDropdown.value = 1;
+        else
+        {
+            resolutionDropdown.value = 2;
+        }
+
+        gameObject.SetActive(false);
+
     }
 
     public void OnClick_Save()
     {
         PlayerPrefs.SetFloat("BGM", slider.value);
         PlayerPrefs.SetFloat("SFX", slider.value);
+
         gameObject.SetActive(false);
     }
 }

@@ -44,17 +44,7 @@ public class GameManager_World : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            bPause = true;
-            Time.timeScale = 0;
-
-            if (pauseObject != null)
-            {
-                pauseObject.SetActive(true);
-            }
-            else
-            {
-                Debug.LogError("Could not load the pauseObject");
-            }
+            OnClick_Pause();
         }
     }
 
@@ -62,6 +52,7 @@ public class GameManager_World : MonoBehaviour
     {
         Time.timeScale = 0;
         bPause = true;
+        BGMManager.Instance.StopSFX();
 
         if (pauseObject != null)
         {

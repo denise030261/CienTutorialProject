@@ -11,7 +11,6 @@ public class WeaponScript : MonoBehaviour
     public int instantiatedWeapon;
     public GameObject weaponInstance;
 
-    private AudioSource audioSource;
     public AudioClip[] attackClips;
 
     [SerializeField] private UI_WeaponSelected weaponSelected;
@@ -20,7 +19,6 @@ public class WeaponScript : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        audioSource = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -55,24 +53,20 @@ public class WeaponScript : MonoBehaviour
 
             if (currentWeapon == 1 || currentWeapon == 2)
             {
-                audioSource.loop = false;
+                BGMManager.Instance.PlaySFX(attackClips[currentWeapon], false);
                 Destroy(weaponInstance, .1f);
             }
             else
             {
-                audioSource.loop = true;
+                BGMManager.Instance.PlaySFX(attackClips[currentWeapon], true);
             }
-
-
-            audioSource.clip = attackClips[currentWeapon];
-            audioSource.Play();
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             if (instantiatedWeapon == 0 || instantiatedWeapon == 3)
             {
-                audioSource.Stop();
+                BGMManager.Instance.StopSFX();
                 Destroy(weaponInstance);
             }
         }

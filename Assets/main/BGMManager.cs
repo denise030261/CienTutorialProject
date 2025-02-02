@@ -10,6 +10,7 @@ public class BGMManager : MonoBehaviour
     public static BGMManager Instance { get { return instance; } }
 
     public AudioSource audioSource;
+    public AudioSource audioSFXSource;
     private AudioClip bgmClip;
     private float bgmVolume = 1.0f;
 
@@ -26,8 +27,6 @@ public class BGMManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        audioSource = GetComponent<AudioSource>();
     }
 
        private void Start()
@@ -48,7 +47,7 @@ public class BGMManager : MonoBehaviour
 
     public void StopBGM()
     {
-            audioSource.Stop();
+        audioSource.Stop();
     }
 
     public void SetBGMVolume(float volume)
@@ -58,6 +57,30 @@ public class BGMManager : MonoBehaviour
     }
 
     public float GetBGMVolume()
+    {
+        return bgmVolume;
+    }
+
+    public void PlaySFX(AudioClip clip, bool bLoop)
+    {
+        audioSFXSource.clip = clip;
+        audioSFXSource.volume = PlayerPrefs.GetFloat("BGM", 0.5f);
+        audioSFXSource.loop = bLoop;
+        audioSFXSource.Play();
+    }
+
+    public void StopSFX()
+    {
+        audioSFXSource.Stop();
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        bgmVolume = volume;
+        audioSFXSource.volume = bgmVolume;
+    }
+
+    public float GetSFXVolume()
     {
         return bgmVolume;
     }
