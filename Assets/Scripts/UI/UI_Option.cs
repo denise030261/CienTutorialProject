@@ -22,6 +22,7 @@ public class UI_Option : MonoBehaviour
     {
         InitializeResolutionOptions();
         fullscreenToggle.onValueChanged.AddListener(ToggleFullscreen);
+        LoadSettings();
     }
 
     private void OnEnable()
@@ -100,21 +101,21 @@ public class UI_Option : MonoBehaviour
         PlayerPrefs.SetFloat("BGM", curVolume);
         PlayerPrefs.SetFloat("SFX", curVolume);
 
-        fullscreenToggle.isOn = curFull;
-        Screen.SetResolution(curWidth, curHeight, curFull? FullScreenMode.FullScreenWindow: FullScreenMode.Windowed);
+        slider.value = curVolume;
         BGMManager.Instance.audioSource.volume = curVolume;
 
-        if (curHeight == 720)
-            resolutionDropdown.value = 0;
-        else if(curHeight==900)
-            resolutionDropdown.value = 1;
-        else
+        for (int i = 0; i < resolutionArray.Length; i++)
         {
-            resolutionDropdown.value = 2;
+            if (resolutionArray[i].width == curWidth && resolutionArray[i].height == curHeight)
+            {
+                resolutionDropdown.value = i;
+                break;
+            }
         }
+        fullscreenToggle.isOn = curFull;
+        Screen.SetResolution(curWidth, curHeight, curFull ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
 
         gameObject.SetActive(false);
-
     }
 
     public void OnClick_Save()
