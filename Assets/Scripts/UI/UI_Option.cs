@@ -12,7 +12,7 @@ public class UI_Option : MonoBehaviour
     public GameObject ToggleCheck;
     public Text currentStateText;
 
-    Resolution[] resolutionArray = new Resolution[3];
+    Resolution[] resolutionArray = new Resolution[20];
     float curVolume = 0;
     bool curFull = false;
     int curHeight = 0;
@@ -50,8 +50,11 @@ public class UI_Option : MonoBehaviour
         foreach (Resolution resolution in resolutions)
         {
             string option = resolution.width + " x " + resolution.height;
-            if (Mathf.Approximately((float)resolution.width / resolution.height, 16f / 9f) && resolution.refreshRateRatio.numerator==60)
+
+            if (Mathf.Approximately((float)resolution.width / resolution.height, 16f / 9f) &&
+                resolution.refreshRateRatio.numerator / (float)resolution.refreshRateRatio.denominator == 60)
             {
+                Debug.LogError(resolution.refreshRateRatio.ToString());
                 resolutionArray[resolutionIndex] = resolution;
                 resolutionIndex++;
                 resolutionDropdown.options.Add(new Dropdown.OptionData(option));
